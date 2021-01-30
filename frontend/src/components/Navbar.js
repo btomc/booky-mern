@@ -63,6 +63,7 @@ const NavLogo = styled.div`
 
 const LogoIcon = styled(ImBooks)`
     margin-right: 4px;
+    font-size: 2.3rem;
 `;
 
 const NavMenu = styled.div`
