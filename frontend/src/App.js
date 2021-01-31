@@ -1,4 +1,5 @@
 import React from 'react'
+import Faq from './components/Faq'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import GlobalStyle from './globalStyles'
@@ -10,13 +11,7 @@ const App = () => {
       <GlobalStyle />
       <Navbar />
       <Hero />
-      <p>Books</p>
-      <p>Books</p>
-      <p>Books</p>
-      <p>Books</p>
-      <p>Books</p>
-      <p>Books</p>
-      <p>Books</p>
+      <Faq />
     </>
   )
 }

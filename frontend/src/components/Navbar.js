@@ -21,7 +21,10 @@ const Navbar = () => {
                         <CartIcon><MdShoppingCart /></CartIcon>
                         <CartText>Cart</CartText>
                     </Cart>
-                    <ClientName onClick={handleClick} >Jane Doe<IoMdArrowDropdown /></ClientName>
+                    <ClientName onClick={handleClick} >
+                        <p>Jane Doe</p>
+                        <IoMdArrowDropdown />
+                    </ClientName>
                     <ClientMenu onClick={handleClick} click={click}>
                         <MenuItem>
                             <p>Profile</p>
@@ -52,6 +55,10 @@ const NavContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     color: #514CAD;
+
+    @media screen and (max-width: 700px) {
+        margin: 0 1rem;
+    }
 `;
 
 const NavLogo = styled.div`
@@ -78,6 +85,12 @@ const Cart = styled.div`
     align-items: center;
     margin-right: 1rem;
     cursor: pointer;
+
+    @media screen and (max-width: 640px) {
+        p {
+            display: none;
+        }
+    }
 `;
 
 const CartIcon = styled(MdShoppingCart)`
@@ -93,6 +106,12 @@ const ClientName = styled.p`
     display: flex;
     align-items: center;
     cursor: pointer;
+
+    @media screen and (max-width: 475px) {
+        p {
+            display: none;
+        }
+    }
 `;
 
 const ClientMenu = styled.div`

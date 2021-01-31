@@ -28,7 +28,6 @@ const HeroContainer = styled.div`
     height: 480px;
     position: relative;
     color: #f2f2f2;
-    background-blend-mode: screen;
     overflow: hidden;
 
     :before {
