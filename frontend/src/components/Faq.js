@@ -47,9 +47,8 @@ const AccordionSection = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* height: 800px; */
     padding-top: 3rem;
-        background: #f2f2f2;
+    background: #f2f2f2;
 `;
 
 const AccordionContent = styled.div`
@@ -58,7 +57,6 @@ const AccordionContent = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
-    /* background: #f2f2f2; */
     padding: 2rem 0;
     margin: 0 0 2rem 0;
     height: 100%;
@@ -70,8 +68,6 @@ const FaqH2 = styled.h2`
 `;
 
 const FaqContainer = styled.div`
-    /* position: absolute; */
-    /* top: 30%; */
     box-shadow: 2px 10px 35px 1px rgba(153, 153, 153, 0.3);
     margin: 0 0 2rem 0;
     display: flex;
