@@ -1,20 +1,24 @@
 import React from 'react'
-import Faq from './components/Faq'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Footer from './components/Footer'
-import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import GlobalStyle from './globalStyles'
+import HomeScreen from './screens/HomeScreen'
+import OfferedProductsScreen from './screens/OfferedProductsScreen'
+
 
 
 const App = () => {
   return (
-    <>
+    <Router>
       <GlobalStyle />
       <Navbar />
-      <Hero />
-      <Faq />
+      <Switch>
+        <Route path='/' component={HomeScreen} exact />
+        <Route path='/products' component={OfferedProductsScreen} exact />
+      </Switch>
       <Footer />
-    </>
+    </Router>
   )
 }
 

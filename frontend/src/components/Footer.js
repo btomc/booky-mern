@@ -3,6 +3,7 @@ import styled from "styled-components"
 import {FaFacebook, FaInstagram} from 'react-icons/fa'
 import {GrPinterest} from 'react-icons/gr'
 import {ImBooks} from 'react-icons/im'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
     return (
@@ -39,11 +40,12 @@ const FooterWrap = styled.div`
     margin: 0 3rem;
 `;
 
-const LogoWrap = styled.div`
+const LogoWrap = styled(Link)`
     display: flex;
     align-items: center;
     font-size: 1.7rem;
-    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
 `;
 
 const LogoIcon = styled(ImBooks)`
@@ -53,14 +55,13 @@ const LogoIcon = styled(ImBooks)`
 
 const SocialMedia = styled.div`
     display: flex;
-    padding: 2rem 0;
+    padding: 1.6rem 0 1rem 0;
 `;
 
 const SocialLink = styled.a`
     color: #fff;
     margin-left: 1.5rem;
     font-size: 1.8rem;
-    cursor: pointer;
     text-decoration: none;
     transition: .2s ease-out;
 

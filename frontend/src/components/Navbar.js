@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { ImBooks } from 'react-icons/im'
 import { MdShoppingCart } from 'react-icons/md'
 import { IoMdArrowDropdown } from 'react-icons/io'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
     const [click, setClick] = useState(false)
@@ -61,11 +62,12 @@ const NavContainer = styled.div`
     }
 `;
 
-const NavLogo = styled.div`
+const NavLogo = styled(Link)`
     display: flex;
     align-items: center;
     font-size: 2rem;
-    cursor: pointer;
+    text-decoration: none;
+    color: #514CAD;
 `;
 
 const LogoIcon = styled(ImBooks)`

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import bg from '../images/bg-1.jpg'
 import { IoMdArrowRoundForward } from 'react-icons/io'
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
     return (
@@ -10,7 +11,7 @@ const Hero = () => {
             <HeroContent>
                 <HeroItems>
                     <HeroH1>Books are a uniquely portable magic</HeroH1>
-                    <HeroBtn>See more<Arrow /></HeroBtn>
+                    <HeroBtn to='/products'>See more<Arrow /></HeroBtn>
                 </HeroItems>
             </HeroContent>
         </HeroContainer>
@@ -25,7 +26,7 @@ const HeroContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 480px;
+    height: 500px;
     position: relative;
     color: #f2f2f2;
     overflow: hidden;
@@ -82,7 +83,7 @@ const HeroH1 = styled.h1`
     text-align: center;
     margin-bottom: 3rem;
 `;
-const HeroBtn = styled.button`
+const HeroBtn = styled(Link)`
     font-size: 1.4rem;
     padding: 1rem 4rem;
     border: none;
@@ -94,6 +95,7 @@ const HeroBtn = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
 
     &:hover {
         background: #464293;

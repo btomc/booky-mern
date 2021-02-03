@@ -89,7 +89,7 @@ const Item = styled.div`
 
     h3 {
         padding: 2rem;
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
 
     span {
@@ -105,7 +105,7 @@ const Dropdown = styled.div`
     border-bottom:  2px solid #514cad;
     border-top: 2px solid #524cad;
     padding: 1rem 2rem;
-    max-width: 560px;
+    max-width: 520px;
 
     p {
         font-size: 1.2rem;
