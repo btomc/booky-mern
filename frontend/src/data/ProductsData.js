@@ -125,7 +125,7 @@ export const ProductsData = [
         binding: 'Paperback',
         price: 21.99,
         countInStock: 5,
-        rating: 4.7,
+        rating: 5.0,
         numReviews: 7,
     }
 ]

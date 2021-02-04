@@ -9,7 +9,7 @@ const OfferedProductsScreen = () => {
             <ProductsRow>
                 {ProductsData.map(product => {
                     return (
-                        <Product product={product} />
+                        <Product product={product} key={product._id} />
                     )
                 })}
             </ProductsRow>
@@ -25,7 +25,8 @@ const ProductsContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #8e88fc;
+    background: linear-gradient(180deg, rgba(81,76,173,0.7) 0%, rgba(129,76,173,0.6) 100%),
+                linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 100%);
 `;
 
 const ProductsRow = styled.div`

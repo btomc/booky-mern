@@ -1,14 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import Rating from './Rating'
 
-const Product = ({ product}) => {
+const Product = ({ product }) => {
     return (
         <Card>
             <ProductImg to={`/products/${product._id}`}><ImgCard src={product.image} /></ProductImg>
-            <CardTitle to={`/products/${product._id}`}><p>{product.title}</p></CardTitle>
+            <CardTitle to={`/products/${product._id}`}><h3>{product.title}</h3></CardTitle>
             <CardAuthor>{product.author}</CardAuthor>
-            <CardReviews>{product.rating} from {product.numReviews}</CardReviews>
+            <Rating 
+                value={product.rating} 
+                text={`${product.numReviews} reviews`} 
+            />
             <CardPrice>${product.price}</CardPrice>
         </Card>
     )
@@ -43,21 +47,17 @@ const ImgCard = styled.img`
 const CardTitle = styled(Link)`
     text-decoration: none;
 
-    p {
-    font-size: 1.5rem;
-    margin: 1rem 0 .5rem 0;
-    color: #514cad;
+    h3 {
+        font-size: 1.5rem;
+        margin: 1rem 0 .5rem 0;
+        color: #514cad;
     }
 `;
 
 const CardAuthor = styled.p`
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 5px;
-`;
-
-const CardReviews = styled.p`
-    margin-bottom: 4px;
 `;
 
 const CardPrice = styled.p`
