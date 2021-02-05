@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-// import { Link } from 'react-router-dom'
 import Rating from '../components/Rating'
-import { ProductsData} from '../data/ProductsData'
 import { Button } from '../components/Button'
+import axios from 'axios'
 
 
 const ProductScreen = ({ match }) => {
-    const product = ProductsData.find(product => product._id === match.params.id)
+    const [product, setProduct] = useState({})
+
+    useEffect(() => {
+        const fetchProducts = async() => {
+            const { data } = await axios.get(`/api/products/${match.params.id}`)
+
+            setProduct(data)
+        }
+
+        fetchProducts()
+    })
 
     return (
         <ProductContainer>

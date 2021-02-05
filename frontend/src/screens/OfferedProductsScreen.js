@@ -1,17 +1,29 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Product from '../components/Product'
-import { ProductsData} from '../data/ProductsData'
+import axios from 'axios'
 
 const OfferedProductsScreen = () => {
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        const fetchProducts = async() => {
+            const { data } = await axios.get('/api/products')
+
+            setProducts(data)
+        }
+
+        fetchProducts()
+    }, [])
+
     return (
         <ProductsContainer>
             <ProductsRow>
-                {ProductsData.map(product => {
-                    return (
-                        <Product product={product} key={product._id} />
-                    )
-                })}
+                {products.map((product) =>  (
+                    <Col key={product._id}>
+                        <Product product={product}  />
+                    </Col>
+                ))}
             </ProductsRow>
         </ProductsContainer>
     )
@@ -39,4 +51,6 @@ const ProductsRow = styled.div`
         grid-template-columns: repeat(3, 1fr);
     }
 `;
+
+const Col = styled.div``;
 
