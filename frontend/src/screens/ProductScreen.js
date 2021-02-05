@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import Rating from '../components/Rating'
 import { ProductsData} from '../data/ProductsData'
+import { Button } from '../components/Button'
 
 
 const ProductScreen = ({ match }) => {
@@ -10,7 +11,7 @@ const ProductScreen = ({ match }) => {
 
     return (
         <ProductContainer>
-            <BtnBack to='/products'>Go Back</BtnBack>
+            <BtnWrap><Button to='/products' primary='true'>Go Back</Button></BtnWrap>
             <ProductContent>
                 <PictureWrap>
                     <ProductImg><Img src={product.image} alt={product.name} /></ProductImg>
@@ -34,7 +35,7 @@ const ProductScreen = ({ match }) => {
                         <ProductItem>Status: {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}</ProductItem>
                         <Qty></Qty>
                         <Price>${product.price}</Price>
-                        <AddBtn type='button' disabled={product.countInStock === 0}>Add Cart</AddBtn>
+                        <Button type='button' disabled={product.countInStock === 0}>Add Cart</Button>
                     </ProductWrap>
                 </ProductDetails>
             </ProductContent>
@@ -88,26 +89,10 @@ const Img = styled.img`
     height: 100%;
     width: 100%;
 `;
-const BtnBack = styled(Link)`
-    padding: 1rem 2rem;
-    border: none;
-    background: #171e40;
-    color: #f2f2f2;
-    transition: 0.2s ease-out;
-    cursor: pointer;
-    outline: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
 
+const BtnWrap = styled.div`
     margin: 2rem 2rem 0 2rem;
     width: 150px;
-
-    &:hover {
-        background: #464293;
-        transition: 0.2s ease-out;
-    }
 `;
 
 const ProductDetails = styled.div`
@@ -201,24 +186,4 @@ const Price = styled.p`
         margin-bottom: 1rem;
     }
 `;
-const AddBtn = styled.button`
-    padding: 1rem 2rem;
-    border: none;
-    background: #514cad;
-    color: #f2f2f2;
-    transition: 0.2s ease-out;
-    cursor: pointer;
-    outline: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
 
-    margin: 2rem 2rem 0 2rem;
-    width: 150px;
-
-    &:hover {
-        background: #464293;
-        transition: 0.2s ease-out;
-    }
-`;
