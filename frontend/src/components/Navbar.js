@@ -15,7 +15,7 @@ const Navbar = () => {
             <NavContainer>
                 <NavLogo to='/'>
                     <LogoIcon><ImBooks /></LogoIcon>
-                    <p>booky</p>
+                    booky
                 </NavLogo>
                 <NavMenu>
                     <Cart>
@@ -28,7 +28,7 @@ const Navbar = () => {
                     </ClientName>
                     <ClientMenu onClick={handleClick} click={click}>
                         <MenuItem>
-                            <p>Profile</p>
+                            Profile
                         </MenuItem>
                         <MenuItem><LogoutBtn>Logout</LogoutBtn></MenuItem>
                     </ClientMenu>
@@ -103,7 +103,7 @@ const CartText = styled.p`
     text-transform: uppercase;
 `;
 
-const ClientName = styled.p`
+const ClientName = styled.div`
     text-transform: uppercase;
     display: flex;
     align-items: center;

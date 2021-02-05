@@ -18,11 +18,11 @@ const Faq = () => {
         <AccordionSection>
             <FaqH2>Frequently Asked Questions</FaqH2>
             <AccordionContent>
-                <FaqContainer>
+           
                     {FaqData.map((item, index) => {
                         return (
-                            <>
-                                <Item onClick={() => toggle(index)} key={index}>
+                            <Wrap key={index}>
+                                <Item onClick={() => toggle(index)} >
                                     <h3>{item.question}</h3>
                                     <span>{clicked === index ? <FiMinus /> : <FiPlus />}</span>
                                 </Item>
@@ -31,10 +31,10 @@ const Faq = () => {
                                         <p>{item.answer}</p>
                                     </Dropdown>
                                 ) : null}
-                            </>
+                            </Wrap>
                         )
                     })}
-                </FaqContainer>
+        
             </AccordionContent>
         </AccordionSection>
     )
@@ -67,13 +67,14 @@ const FaqH2 = styled.h2`
     color: #171e40;
 `;
 
-const FaqContainer = styled.div`
-    box-shadow: 2px 10px 35px 1px rgba(153, 153, 153, 0.3);
-    margin: 0 0 2rem 0;
+const Wrap = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 800px;
+    box-shadow: 2px 10px 35px 1px rgba(153, 153, 153, 0.3);
+    margin: 0 0 2rem 0;
+    max-width: 600px;
+    width: 600px;
     margin-bottom: 10px;
     background: #f2f2f2;
 `;
@@ -94,6 +95,7 @@ const Item = styled.div`
 
     span {
         margin-right: 2.5rem;
+        font-size: 2rem;
     }
 `;
 
@@ -105,10 +107,11 @@ const Dropdown = styled.div`
     border-bottom:  2px solid #514cad;
     border-top: 2px solid #524cad;
     padding: 1rem 2rem;
-    max-width: 520px;
+    max-width: 600px;
 
     p {
         font-size: 1.2rem;
         line-height: 1.4;
     }
 `;
+

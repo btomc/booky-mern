@@ -6,8 +6,8 @@ import Rating from './Rating'
 const Product = ({ product }) => {
     return (
         <Card>
-            <ProductImg to={`/products/${product._id}`}><ImgCard src={product.image} /></ProductImg>
-            <CardTitle to={`/products/${product._id}`}><h3>{product.title}</h3></CardTitle>
+            <ProductImg to={`/product/${product._id}`}><ImgCard src={product.image} /></ProductImg>
+            <CardTitle to={`/product/${product._id}`}><h3>{product.title}</h3></CardTitle>
             <CardAuthor>{product.author}</CardAuthor>
             <Rating 
                 value={product.rating} 
