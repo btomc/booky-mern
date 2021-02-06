@@ -62,7 +62,7 @@ const RatingContainer = styled.div`
 `;
 
 const IconSpan = styled.span`
-    margin-right: 4px;
+    margin-right: 5px;
 `;
 const TextSpan = styled.span`
     font-weight: 500;

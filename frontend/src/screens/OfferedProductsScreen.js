@@ -37,8 +37,8 @@ const ProductsContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(180deg, rgba(81,76,173,0.7) 0%, rgba(129,76,173,0.6) 100%),
-                linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 100%);
+    /* background: #ceccfc; */
+    background: rgba(129,76,173,0.3);
 `;
 
 const ProductsRow = styled.div`

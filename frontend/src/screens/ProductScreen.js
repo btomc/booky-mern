@@ -44,7 +44,7 @@ const ProductScreen = ({ match }) => {
                         <ProductItem>Status: {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}</ProductItem>
                         <Qty></Qty>
                         <Price>${product.price}</Price>
-                        <Button type='button' disabled={product.countInStock === 0}>Add Cart</Button>
+                        <Button type='button' disabled={product.countInStock === 0}>Add to Cart</Button>
                     </ProductWrap>
                 </ProductDetails>
             </ProductContent>
@@ -58,8 +58,8 @@ const ProductContainer = styled.div`
     display: flex;
     flex-direction: column;
     color: #171e40;
-    background: linear-gradient(180deg, rgba(81,76,173,0.7) 0%, rgba(129,76,173,0.6) 100%),
-                linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 100%);
+    /* background: #bebafc; */
+    background: rgba(129,76,173,0.5);
 `;
 
 const ProductContent = styled.div`
@@ -79,9 +79,10 @@ const PictureWrap = styled.div`
     align-items: center;
     height: 460px;
     width: 340px;
-    background: #f2f2f2;
     border-radius: 4px;
     margin: 2rem 1rem 1rem 0;
+    background: #f7f7f7;
+    box-shadow: 0 1.5rem 4rem rgba(0,0,0, .15);
 
     @media screen and (max-width: 920px) {
         margin-right: 0;
@@ -116,7 +117,8 @@ const ProductDetails = styled.div`
 const ProductInfo = styled.div`
     display: flex;
     flex-direction: column;
-    background: #f2f2f2;
+    background: #f7f7f7;
+    box-shadow: 0 1.5rem 4rem rgba(0,0,0, .15);
     margin: 2rem 0;
     border-radius: 4px;
 
@@ -160,7 +162,8 @@ const ProductWrap = styled.div`
     align-items: center;
     justify-content: space-evenly;
     margin: 2rem 0 2rem 1rem;
-    background: #f2f2f2;
+    /* background: #dddbfc; */
+    background: #e7e5fc;
     min-width: 200px;
     border-radius: 4px;
 

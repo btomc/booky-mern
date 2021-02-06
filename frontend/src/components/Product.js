@@ -21,7 +21,6 @@ const Product = ({ product }) => {
 export default Product
 
 const Card = styled.div`
-    /* border: 2.5px solid #e0e0e0;  */
     border-radius: 4px;
     width: 280px;
     min-height: 500px;
@@ -29,7 +28,8 @@ const Card = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #f2f2f2;
+    background: #f7f7f7;
+    box-shadow: 0 1.5rem 4rem rgba(0,0,0, .07);
     color: #171e40;
 `;
 
