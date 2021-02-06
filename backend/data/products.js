@@ -1,6 +1,5 @@
 const products = [
     {
-        _id: '1',
         title: 'Shadow and Bone',
         author: 'Leigh Bardugo',
         image: '../images/book-30.jpg',
@@ -15,7 +14,6 @@ const products = [
         numReviews: 4,
     },
     {
-        _id: '2',
         title: 'Maybe Someday',
         author: 'Colleen Hoover',
         image: '../images/book-1.jpg',
@@ -30,7 +28,6 @@ const products = [
         numReviews: 4,
     },
     {
-        _id: '3',
         title: '9 November',
         author: 'Colleen Hoover',
         image: '../images/book-2.jpg',
@@ -45,7 +42,6 @@ const products = [
         numReviews: 7,
     },
     {
-        _id: '4',
         title: 'The Surgeon',
         author: 'Tess Gerritsen',
         image: '../images/book-4.jpg',
@@ -60,7 +56,6 @@ const products = [
         numReviews: 7,
     },
     {
-        _id: '5',
         title: 'Fool Me Once',
         author: 'Harlan Coben',
         image: '../images/book-7.jpg',
@@ -75,7 +70,6 @@ const products = [
         numReviews: 4,
     },
     {
-        _id: '6',
         title: 'Play Dead',
         author: 'Harlan Coben',
         image: '../images/book-10.jpg',
@@ -90,7 +84,6 @@ const products = [
         numReviews: 3,
     },
     {
-        _id: '7',
         title: 'Gallery of the Dead',
         author: 'Chris Carter',
         image: '../images/book-13.jpg',
@@ -105,7 +98,6 @@ const products = [
         numReviews: 4,
     },
     {
-        _id: '8',
         title: 'The Night Stalker',
         author: 'Chris Carter',
         image: '../images/book-14.jpg',
