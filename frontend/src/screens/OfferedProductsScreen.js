@@ -2,7 +2,9 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import Product from '../components/Product'
+import Loader from '../components/Loader'
 import { listProducts } from '../actions/productActions'
+import Message from '../components/Message'
 
 const OfferedProductsScreen = () => {
     const dispatch = useDispatch()
@@ -17,9 +19,9 @@ const OfferedProductsScreen = () => {
     return (
         <ProductsContainer>
             {loading ? (
-                <h3>Loading...</h3>
+                <Loader />
             ) : error ? (
-                <h4>{error}</h4>
+                <Message>{error}</Message>
             ) : (
                 <Row>
                     {products.map((product) =>  (
