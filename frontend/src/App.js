@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import HomeScreen from './screens/HomeScreen'
 import ProductScreen from './screens/ProductScreen'
 import OfferedProductsScreen from './screens/OfferedProductsScreen'
+import CartScreen from './screens/CartScreen'
 
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
       <Switch>
         <Route path='/products' component={OfferedProductsScreen}  />
         <Route path='/product/:id' component={ProductScreen}  />
+        <Route path='/cart/:id?' component={CartScreen}  />
         <Route path='/' component={HomeScreen} exact />
       </Switch>
       <Footer />

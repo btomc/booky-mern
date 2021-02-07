@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import Rating from '../components/Rating'
@@ -8,7 +8,9 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 
 
-const ProductScreen = ({ match }) => {
+const ProductScreen = ({ history, match }) => {
+    const [qty, setQty] = useState(0)
+
     const dispatch = useDispatch()
 
     const productDetails = useSelector(state => state.productDetails)
@@ -18,9 +20,13 @@ const ProductScreen = ({ match }) => {
         dispatch(listProductDetails(match.params.id))
     }, [dispatch, match])
 
+    const addToCartHandler = () => {
+        history.push(`/cart/${match.params.id}?qty=${qty}`)
+    }
+
     return (
         <ProductContainer>
-            <BtnWrap><Button to='/products' primary='true'>Go Back</Button></BtnWrap>
+            <BtnWrap><Button to='/products' primary='true' >Go Back</Button></BtnWrap>
             {loading ? ( <Loader /> ) : error ? ( <Message>{error}</Message> ) : (
                 <ProductContent>
                     <PictureWrap>
@@ -43,9 +49,20 @@ const ProductScreen = ({ match }) => {
                             <ProductItem>Binding: {product.binding}</ProductItem>
                             <ProductItem>Pages: {product.pages}</ProductItem>
                             <ProductItem>Status: {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}</ProductItem>
-                            <Qty></Qty>
+                            {product.countInStock > 0 && (
+                                <Qty>
+                                    <QtyP>Qty:</QtyP>
+                                    <Form as='select' value={qty} onChange={(e) => setQty(e.target.value)}>
+                                        {[...Array(product.countInStock).keys()].map(x => (
+                                            <option key={x + 1}>
+                                                {x + 1}
+                                            </option>
+                                        ))}
+                                    </Form>
+                                </Qty>
+                            )}
                             <Price>${product.price}</Price>
-                            <Button type='button' disabled={product.countInStock === 0}>Add to Cart</Button>
+                            <Button onClick={addToCartHandler} type='button' disabled={product.countInStock === 0}>Add to Cart</Button>
                         </ProductWrap>
                     </ProductDetails>
                 </ProductContent>
@@ -187,9 +204,24 @@ const ProductItem = styled.p`
 `;
 
 const Qty = styled.div`
+    display: flex;
+    align-items: center;
+
     @media screen and (max-width: 700px) {
         margin-bottom: 1rem;
     }
+`;
+
+const QtyP = styled.p`
+    font-weight: 600;
+    margin-right: .8rem;
+`;
+
+const Form = styled.form`
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1.5px solid #514cad;
 `;
 
 const Price = styled.p`
