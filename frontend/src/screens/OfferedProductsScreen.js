@@ -1,30 +1,34 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import Product from '../components/Product'
-import axios from 'axios'
+import { listProducts } from '../actions/productActions'
 
 const OfferedProductsScreen = () => {
-    const [products, setProducts] = useState([])
+    const dispatch = useDispatch()
+
+    const productList = useSelector(state => state.productList)
+    const { loading, error, products } = productList
 
     useEffect(() => {
-        const fetchProducts = async() => {
-            const { data } = await axios.get('/api/products')
-
-            setProducts(data)
-        }
-
-        fetchProducts()
-    }, [])
+        dispatch(listProducts())
+    }, [dispatch])
 
     return (
         <ProductsContainer>
-            <ProductsRow>
-                {products.map((product) =>  (
-                    <Col key={product._id}>
-                        <Product product={product}  />
-                    </Col>
-                ))}
-            </ProductsRow>
+            {loading ? (
+                <h3>Loading...</h3>
+            ) : error ? (
+                <h4>{error}</h4>
+            ) : (
+                <Row>
+                    {products.map((product) =>  (
+                        <Col key={product._id}>
+                            <Product product={product}  />
+                        </Col>
+                    ))}
+                </Row>
+            )}
         </ProductsContainer>
     )
 }
@@ -41,7 +45,7 @@ const ProductsContainer = styled.div`
     background: rgba(129,76,173,0.3);
 `;
 
-const ProductsRow = styled.div`
+const Row = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     text-align: center;
