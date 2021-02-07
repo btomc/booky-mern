@@ -1,53 +1,55 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import Rating from '../components/Rating'
 import { Button } from '../components/Button'
-import axios from 'axios'
+import { listProductDetails } from '../actions/productActions'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
 
 
 const ProductScreen = ({ match }) => {
-    const [product, setProduct] = useState({})
+    const dispatch = useDispatch()
+
+    const productDetails = useSelector(state => state.productDetails)
+    const { loading, error, product } = productDetails
 
     useEffect(() => {
-        const fetchProducts = async() => {
-            const { data } = await axios.get(`/api/products/${match.params.id}`)
-
-            setProduct(data)
-        }
-
-        fetchProducts()
-    }, [match])
+        dispatch(listProductDetails(match.params.id))
+    }, [dispatch, match])
 
     return (
         <ProductContainer>
             <BtnWrap><Button to='/products' primary='true'>Go Back</Button></BtnWrap>
-            <ProductContent>
-                <PictureWrap>
-                    <ProductImg><Img src={product.image} alt={product.name} /></ProductImg>
-                </PictureWrap>
-                <ProductDetails>
-                    <ProductInfo>
-                        <InfoWrap>
-                            <Title>{product.title}</Title>
-                            <Author>{product.author}</Author>
-                            <Genre>{product.genre}</Genre>
-                            <Rating value={product.rating} text={`${product.numReviews} reviews`} />
-                        </InfoWrap>
-                        <Plot>{product.plot}</Plot>
-                    </ProductInfo>
-                    <ProductWrap>
-                        <ProductItem>Publication Date 
-                            <span>{product.publicationDate}</span>
-                        </ProductItem>
-                        <ProductItem>Binding: {product.binding}</ProductItem>
-                        <ProductItem>Pages: {product.pages}</ProductItem>
-                        <ProductItem>Status: {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}</ProductItem>
-                        <Qty></Qty>
-                        <Price>${product.price}</Price>
-                        <Button type='button' disabled={product.countInStock === 0}>Add to Cart</Button>
-                    </ProductWrap>
-                </ProductDetails>
-            </ProductContent>
+            {loading ? ( <Loader /> ) : error ? ( <Message>{error}</Message> ) : (
+                <ProductContent>
+                    <PictureWrap>
+                        <ProductImg><Img src={product.image} alt={product.name} /></ProductImg>
+                    </PictureWrap>
+                    <ProductDetails>
+                        <ProductInfo>
+                            <InfoWrap>
+                                <Title>{product.title}</Title>
+                                <Author>{product.author}</Author>
+                                <Genre>{product.genre}</Genre>
+                                <Rating value={product.rating} text={`${product.numReviews} reviews`} />
+                            </InfoWrap>
+                            <Plot>{product.plot}</Plot>
+                        </ProductInfo>
+                        <ProductWrap>
+                            <ProductItem>Publication Date 
+                                <span>{product.publicationDate}</span>
+                            </ProductItem>
+                            <ProductItem>Binding: {product.binding}</ProductItem>
+                            <ProductItem>Pages: {product.pages}</ProductItem>
+                            <ProductItem>Status: {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}</ProductItem>
+                            <Qty></Qty>
+                            <Price>${product.price}</Price>
+                            <Button type='button' disabled={product.countInStock === 0}>Add to Cart</Button>
+                        </ProductWrap>
+                    </ProductDetails>
+                </ProductContent>
+            )}
         </ProductContainer>
     )
 }
