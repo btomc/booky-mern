@@ -9,7 +9,7 @@ import Message from '../components/Message'
 
 
 const ProductScreen = ({ history, match }) => {
-    const [qty, setQty] = useState(0)
+    const [qty, setQty] = useState(1)
 
     const dispatch = useDispatch()
 
@@ -221,7 +221,9 @@ const Form = styled.form`
     padding: 8px;
     font-size: 1rem;
     border-radius: 4px;
-    border: 1.5px solid #514cad;
+    border: none;
+    outline: none;
+    cursor: pointer;
 `;
 
 const Price = styled.p`
