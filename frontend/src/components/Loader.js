@@ -38,5 +38,5 @@ const Text = styled.span`
     font-size: 1.6rem;
     color: #524cad;
     font-weight: bold;
-    margin-top: 1rem;
+    margin: 1rem 0;
 `;

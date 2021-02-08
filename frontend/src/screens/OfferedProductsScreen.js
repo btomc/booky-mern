@@ -45,6 +45,7 @@ const ProductsContainer = styled.div`
     justify-content: center;
     /* background: #ceccfc; */
     background: rgba(129,76,173,0.3);
+    min-height: 375px;
 `;
 
 const Row = styled.div`

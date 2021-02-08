@@ -18,7 +18,7 @@ const Navbar = () => {
                     booky
                 </NavLogo>
                 <NavMenu>
-                    <Cart>
+                    <Cart to='/cart'>
                         <CartIcon><MdShoppingCart /></CartIcon>
                         <CartText>Cart</CartText>
                     </Cart>
@@ -82,11 +82,13 @@ const NavMenu = styled.div`
     position: relative;
 `;
 
-const Cart = styled.div`
+const Cart = styled(Link)`
     display: flex;
     align-items: center;
     margin-right: 1rem;
     cursor: pointer;
+    text-decoration: none;
+    color: #514cad;
 
     @media screen and (max-width: 640px) {
         p {
