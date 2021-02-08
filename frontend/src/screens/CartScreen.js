@@ -122,8 +122,8 @@ const CartContent = styled.div`
     display: flex;
     flex-direction: column;
     width: 60%;
-    /* background: #f7f7f7; */
-    background: #e7e5fc;
+    background: #f7f7f7;
+    /* background: #e7e5fc; */
     margin: 2rem;
     border-radius: 4px;
     min-height: 300px;
@@ -253,10 +253,9 @@ const CartSummary = styled.div`
     background: #e7e5fc;
     border-radius: 4px;
     min-height: 340px;
-    margin-right: 2rem;
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
+    margin: 2rem 2rem 2rem 0;
     
     @media screen and (max-width: 890px) {
         margin: 0 0 2rem 0;
