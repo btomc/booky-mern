@@ -33,7 +33,7 @@ const Navbar = () => {
                         <CartIcon><MdShoppingCart /></CartIcon>
                         <CartText>Cart</CartText>
                     </Cart>
-                    
+
                     {userInfo ? (
                         <>
                         <ClientName onClick={handleClick} >
@@ -109,6 +109,8 @@ const Cart = styled(Link)`
     color: #514cad;
 
     @media screen and (max-width: 640px) {
+        margin-right: 3px;
+
         p {
             display: none;
         }
@@ -120,6 +122,7 @@ const CartIcon = styled(MdShoppingCart)`
 `;
 
 const CartText = styled.p`
+    margin-left: 2px;
     text-transform: uppercase;
 `;
 

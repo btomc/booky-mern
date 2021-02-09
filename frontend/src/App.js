@@ -7,6 +7,7 @@ import ProductScreen from './screens/ProductScreen'
 import OfferedProductsScreen from './screens/OfferedProductsScreen'
 import CartScreen from './screens/CartScreen'
 import LoginScreen from './screens/LoginScreen'
+import RegisterScreen from './screens/RegisterScreen'
 
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route path='/login' component={LoginScreen}  />
+        <Route path='/register' component={RegisterScreen}  />
         <Route path='/products' component={OfferedProductsScreen}  />
         <Route path='/product/:id' component={ProductScreen}  />
         <Route path='/cart/:id?' component={CartScreen}  />
