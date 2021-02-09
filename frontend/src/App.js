@@ -6,12 +6,15 @@ import HomeScreen from './screens/HomeScreen'
 import ProductScreen from './screens/ProductScreen'
 import OfferedProductsScreen from './screens/OfferedProductsScreen'
 import CartScreen from './screens/CartScreen'
+import LoginScreen from './screens/LoginScreen'
+
 
 const App = () => {
   return (
     <Router>
       <Navbar />
       <Switch>
+        <Route path='/login' component={LoginScreen}  />
         <Route path='/products' component={OfferedProductsScreen}  />
         <Route path='/product/:id' component={ProductScreen}  />
         <Route path='/cart/:id?' component={CartScreen}  />

@@ -22,8 +22,8 @@ const Container = styled.div`
 `;
 
 const Wrap = styled.div`
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     margin: auto;
     display: block;
 `;
