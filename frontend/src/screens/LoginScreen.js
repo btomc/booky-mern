@@ -144,7 +144,6 @@ const BtnSubmit = styled.button`
 
 `;
 
-const Row = styled.div``;
 const Text = styled.p`
     margin: 1rem;
 `;

@@ -1,14 +1,25 @@
 import React, {useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { ImBooks } from 'react-icons/im'
 import { MdShoppingCart } from 'react-icons/md'
 import { IoMdArrowDropdown } from 'react-icons/io'
 import { Link } from 'react-router-dom'
+import { logout } from '../actions/userActions'
 
 const Navbar = () => {
     const [click, setClick] = useState(false)
 
     const handleClick = () => setClick(!click)
+
+    const dispatch = useDispatch()
+
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
+
+    const logoutHandler = () => {
+        dispatch(logout())
+    }
 
     return (
         <Nav>
@@ -22,16 +33,23 @@ const Navbar = () => {
                         <CartIcon><MdShoppingCart /></CartIcon>
                         <CartText>Cart</CartText>
                     </Cart>
-                    <ClientName onClick={handleClick} >
-                        <p>Jane Doe</p>
-                        <IoMdArrowDropdown />
-                    </ClientName>
-                    <ClientMenu onClick={handleClick} click={click}>
-                        <MenuItem>
-                            Profile
-                        </MenuItem>
-                        <MenuItem><LogoutBtn>Logout</LogoutBtn></MenuItem>
-                    </ClientMenu>
+                    
+                    {userInfo ? (
+                        <>
+                        <ClientName onClick={handleClick} >
+                            <p>{userInfo.name}</p>
+                            <IoMdArrowDropdown />
+                        </ClientName>
+                        <ClientMenu onClick={handleClick} click={click}>
+                            <MenuItem to='/profile'>
+                                <ItemText>Profile</ItemText>
+                            </MenuItem>
+                            <LogoutBtn onClick={logoutHandler}>Logout</LogoutBtn>
+                        </ClientMenu>
+                        </>
+                    ) : <MenuItem to='/login'>
+                            <ItemText>Sign In</ItemText>
+                        </MenuItem>}
                 </NavMenu>
             </NavContainer>
         </Nav>
@@ -124,16 +142,38 @@ const ClientMenu = styled.div`
     position: absolute;
     top: ${({ click }) => (click ? '30px' : '-300px')};
     right: 0;
-    padding: 1.8rem 2rem 1rem 2rem;
     z-index: 999;
-    border-radius: 4px;
+    border-radius: 2px;
     transform: background 3s;
 `;
 
-const MenuItem = styled.div`
-    margin-bottom: 1rem;
+const MenuItem = styled(Link)`
     cursor: pointer;
+    text-decoration: none;
+    color: #514cad;
 `;
 
-const LogoutBtn = styled.a``;
+const ItemText = styled.p`
+    padding: .8rem 1.2rem;
+
+    &:hover {
+        background: #514cad;
+        border-radius: 2px;
+        color: #fff;
+    }
+`;
+
+const LogoutBtn = styled.button`
+    color: #514cad;
+    padding: .8rem 1.2rem;
+    border: none;
+    width: 100%;
+    font-size: 1.1rem;
+
+    &:hover {
+        background: #514cad;
+        border-radius: 2px;
+        color: #fff;
+    }
+`;
 
