@@ -7,7 +7,6 @@ import ProductScreen from './screens/ProductScreen'
 import OfferedProductsScreen from './screens/OfferedProductsScreen'
 import CartScreen from './screens/CartScreen'
 
-
 const App = () => {
   return (
     <Router>

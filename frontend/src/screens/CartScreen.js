@@ -82,6 +82,7 @@ const CartScreen = ({ match, location, history}) => {
                     <CardWrapItem>
                         <CardText>
                             Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
+                            items
                         </CardText>
                         <PriceSpan>${cartItems
                             .reduce((acc, item) => acc + item.qty * item.price, 0)
@@ -110,6 +111,7 @@ const CartContainer = styled.div`
     justify-content: center;
     align-items: flex-start;
     background: rgba(129,76,173,0.5);
+    /* background: rgba(129,76,173,0.3); */
     color: #171e40;
 
     @media screen and (max-width: 890px) {
@@ -126,7 +128,7 @@ const CartContent = styled.div`
     /* background: #e7e5fc; */
     margin: 2rem;
     border-radius: 4px;
-    min-height: 300px;
+    min-height: 340px;
 
     @media screen and (max-width: 890px) {
         width: 90%;
