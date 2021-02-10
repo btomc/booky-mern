@@ -158,7 +158,7 @@ const ItemText = styled.p`
     padding: .8rem 1.2rem;
 
     &:hover {
-        background: #514cad;
+        background: #464293;
         border-radius: 2px;
         color: #fff;
     }
@@ -172,7 +172,7 @@ const LogoutBtn = styled.button`
     font-size: 1.1rem;
 
     &:hover {
-        background: #514cad;
+        background: #464293;
         border-radius: 2px;
         color: #fff;
     }

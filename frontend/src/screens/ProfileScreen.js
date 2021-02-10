@@ -1,14 +1,12 @@
-import React,{useState, useEffect} from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import React, {useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import styled from 'styled-components'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import {BtnSubmit} from '../components/BtnSubmit'
-import { register } from '../actions/userActions'
+import { getUserDetails } from '../actions/userActions'
 
-
-const RegisterScreen = ({ location, history }) => {
+const ProfileScreen = ({ location, history }) => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -17,34 +15,43 @@ const RegisterScreen = ({ location, history }) => {
 
     const dispatch = useDispatch()
 
-    const userRegister = useSelector(state => state.userRegister)
-    const { loading, error, userInfo } = userRegister
+    const userDetails = useSelector(state => state.userDetails)
+    const { loading, error, user } = userDetails
 
-    const redirect = location.search ? location.search.split('=')[1] : '/'
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
 
     useEffect(() => {
-        if(userInfo) {
-            history.push(redirect)
+        if(!userInfo) {
+            history.push('/login')
+        } else {
+            if (!user || !user.name) {
+                dispatch(getUserDetails('profile'))
+            } else {
+                setName(user.name)
+                setEmail(user.email)
+            }
         }
-    }, [history, userInfo, redirect])
+    }, [dispatch, history, userInfo, user])
 
     const submitHandler = (e) => {
         e.preventDefault()
         if(password !== confirmPassword) {
-            setMessage('Password do not match')
+            setMessage('Passwords do not match')
         } else {
-            dispatch(register(name, email, password))
+            // DISPATCH UPDATE PROFILE
         }
     }
 
+
     return (
-        <RegisterContainer>
-            <RegisterContent>
-                <ContentH2>Sign Up</ContentH2>
+        <ProfileContainer>
+            <ProfileContent>
+                <ProfileTitle>User Profile</ProfileTitle>
                 {message && <Message>{message}</Message>}
                 {error && <Message>{error}</Message>}
                 {loading && <Loader />}
-                <RegisterForm onSubmit={submitHandler}>
+                <ProfileForm onSubmit={submitHandler}> 
                     <FormItem>
                         <FormLabel>Name</FormLabel>
                         <FormInput 
@@ -85,62 +92,55 @@ const RegisterScreen = ({ location, history }) => {
                         ></FormInput>
                     </FormItem>
 
-                    <BtnSubmit type='submit' primary='true'>Register</BtnSubmit>
-                </RegisterForm>
-
-                <Text>
-                    Have an Account?{' '}
-                    <Redirect to={redirect ? `/login?redirect=${redirect}` : '/login'}>
-                        Sign In
-                    </Redirect>
-                </Text>
-            </RegisterContent>
-        </RegisterContainer>
+                    <BtnSubmit type='submit' primary='true'>Update</BtnSubmit>
+                </ProfileForm>
+            </ProfileContent>
+            <OrderContent>
+                My Orders
+            </OrderContent>
+        </ProfileContainer>
     )
 }
 
-export default RegisterScreen
+export default ProfileScreen
 
 
-const RegisterContainer = styled.div`
+const ProfileContainer = styled.div`
+    background: #514cad;
     display: flex;
-    justify-content: center;
-    background: rgba(129,76,173,0.5);
+    justify-content: space-evenly;
+`;
+
+const ProfileContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
     color: #fff;
-    color: #171e40;
 `;
 
-const RegisterContent = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #f7f7f7;
-    border-radius: 4px;
-    margin: 2rem 0;
-    min-width: 400px;
-    max-width: 500px;
-`;
-
-const ContentH2 = styled.h2`
+const ProfileTitle = styled.h2`
+    font-size: 1.5rem;
     text-transform: uppercase;
-    padding: 1rem;
 `;
 
-const RegisterForm = styled.form`
+const ProfileForm = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 300px;
+    width: 300px;
 `;
+
 const FormItem = styled.div`
     margin: 1rem;
     display: flex;
     flex-direction: column;
     width: 100%;
 `;
+
 const FormLabel = styled.label`
     margin-bottom: 5px;
-    color: #514cad;
+    color: #fff;
     font-weight: 600;
 `;
 
@@ -148,18 +148,12 @@ const FormInput = styled.input`
     padding: 12px;
     border-radius: 4px;
     font-size: 1rem;
-    border: 1px solid #171e40;
+    border: none;
     outline: none;
     color: #171e40;
 `;
 
-const Text = styled.p`
-    margin: 1rem;
+const OrderContent = styled.div`
+    width: 50%;
 `;
 
-const Redirect = styled(Link)`
-    text-decoration: none;
-    border-bottom: 2px solid #514cad;
-    color: #514cad;
-    font-weight: 600;
-`;

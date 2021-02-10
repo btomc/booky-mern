@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
+import {BtnSubmit} from '../components/BtnSubmit'
 import { login } from '../actions/userActions'
 
 const LoginScreen = ({ location, history }) => {
@@ -120,28 +121,6 @@ const FormInput = styled.input`
     border: 1px solid #171e40;
     outline: none;
     color: #171e40;
-`;
-const BtnSubmit = styled.button`
-    background: #171e40;
-    border: none;
-    color: #f2f2f2;
-    transition: 0.2s ease-out;
-    cursor: pointer;
-    min-width: 100px;
-    max-width: 200px;
-    outline: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-
-    &:hover {
-        background: #464293;
-        transition: 0.2s ease-out;
-    }
-
 `;
 
 const Text = styled.p`
