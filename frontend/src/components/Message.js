@@ -25,5 +25,5 @@ const MessageText = styled.p`
     border-radius: 4px;
     font-weight: 700;
     width: 90%;
-    width: ${({ width }) => width ? '90%' : '100%'};
+    width: ${({ width }) => width ? '100%' : '90%'};
 `;

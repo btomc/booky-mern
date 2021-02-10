@@ -37,7 +37,7 @@ const CartScreen = ({ match, location, history}) => {
             <CartContent>
                 <CartH2>Shopping Cart</CartH2>
                 {cartItems.length === 0 ? (
-                    <Message variant='true' width='true'>
+                    <Message variant='true'>
                         Your cart is empty. <Redirect to='/products'>Go Back</Redirect>
                     </Message>
                 ) : (

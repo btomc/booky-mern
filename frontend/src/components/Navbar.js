@@ -123,11 +123,9 @@ const CartIcon = styled(MdShoppingCart)`
 
 const CartText = styled.p`
     margin-left: 2px;
-    text-transform: uppercase;
 `;
 
 const ClientName = styled.div`
-    text-transform: uppercase;
     display: flex;
     align-items: center;
     cursor: pointer;
