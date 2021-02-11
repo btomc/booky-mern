@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Rating from '../components/Rating'
 import { Button } from '../components/Button'
@@ -26,7 +27,7 @@ const ProductScreen = ({ history, match }) => {
 
     return (
         <ProductContainer>
-            <BtnWrap><Button to='/products' primary='true' >Go Back</Button></BtnWrap>
+            <BtnBack to='/products'>Go Back</BtnBack>
             {loading ? ( <Loader /> ) : error ? ( <Message>{error}</Message> ) : (
                 <ProductContent>
                     <PictureWrap>
@@ -81,6 +82,30 @@ const ProductContainer = styled.div`
     background: rgba(129,76,173,0.5);
 `;
 
+const BtnBack = styled(Link)`
+    background: #171e40;
+    border: none;
+    color: #f2f2f2;
+    transition: 0.2s ease-out;
+    cursor: pointer;
+    min-width: 100px;
+    max-width: 200px;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    margin: 2rem 2rem 0 2rem;
+    width: 150px;
+
+    &:hover {
+        background: #464293;
+        transition: 0.2s ease-out;
+    }
+`;
+
 const ProductContent = styled.div`
     display: flex;
     justify-content: space-evenly;
@@ -117,11 +142,6 @@ const ProductImg = styled.div`
 const Img = styled.img`
     height: 100%;
     width: 100%;
-`;
-
-const BtnWrap = styled.div`
-    margin: 2rem 2rem 0 2rem;
-    width: 150px;
 `;
 
 const ProductDetails = styled.div`
