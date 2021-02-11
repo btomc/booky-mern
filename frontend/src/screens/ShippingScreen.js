@@ -9,7 +9,7 @@ const ShippingScreen = ({ history }) => {
     const cart = useSelector(state => state.cart)
     const { shipping } = cart
 
-    const [shippingMethod, setShippingMethod] = useState(`7$`)
+    const [shippingMethod, setShippingMethod] = useState('7$')
     const [address, setAddress] = useState(shipping.address)
     const [city, setCity] = useState(shipping.city)
     const [postalCode, setPostalCode] = useState(shipping.postalCode)
@@ -99,7 +99,7 @@ const ShippingScreen = ({ history }) => {
                         ></FormInput>
                     </FormItem>
 
-                    <BtnSubmit type='submit' style={{ marginBottom: '12px'}}>Continue</BtnSubmit>
+                    <BtnSubmit type='submit' value='submit' style={{ marginBottom: '12px'}}>Continue</BtnSubmit>
                     
                 </ShippingForm>
             </ShippingContent>

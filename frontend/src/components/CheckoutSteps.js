@@ -12,7 +12,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
                         <Button>Sign In</Button>
                     </ItemLink>
                 ) : (
-                    <Button disabled={true}>Sign In</Button>
+                    <Button opacity={true}>Sign In</Button>
                 )}
             </NavItem>
 
@@ -22,7 +22,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
                         <Button>Shipping</Button>
                     </ItemLink>
                 ) : (
-                    <Button disabled={true}>Shipping</Button>
+                    <Button opacity={true}>Shipping</Button>
                 )}
             </NavItem>
 
@@ -32,7 +32,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
                         <Button>Payment</Button>
                     </ItemLink>
                 ) : (
-                    <Button disabled={true}>Payment</Button>
+                    <Button opacity={true}>Payment</Button>
                 )}
             </NavItem>
 
@@ -42,7 +42,7 @@ const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
                         <Button >Place Order</Button>
                     </ItemLink>
                 ) : (
-                    <Button disabled={true}>Place Order</Button>
+                    <Button opacity={true}>Place Order</Button>
                 )}
             </NavItem>
         </Nav>
@@ -80,6 +80,6 @@ const Button = styled.button`
     text-decoration: none;
     padding: 1rem 1.5rem;
     font-size: 1.1rem;
-    background: ${({ disabled }) => (disabled ? 'rgba(81,76,173,0.8)' : '#514cad')}
+    background: ${({ opacity }) => (opacity ? 'rgba(81,76,173,0.8)' : '#514cad')}
 `;
 

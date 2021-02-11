@@ -18,7 +18,7 @@ export const BtnSubmit = styled.button`
 
     &:hover {
         background: #464293;
-        background: rgb(23,30,64, 0.6);
+        background: rgb(23,30,64, 0.7);
         transition: 0.2s ease-out;
     }
 `;

@@ -10,6 +10,7 @@ import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import ProfileScreen from './screens/ProfileScreen'
 import ShippingScreen from './screens/ShippingScreen'
+import PaymentScreen from './screens/PaymentScreen'
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
     <Router>
       <Navbar />
       <Switch>
+        <Route path='/payment' component={PaymentScreen}  />
         <Route path='/shipping' component={ShippingScreen}  />
         <Route path='/login' component={LoginScreen}  />
         <Route path='/register' component={RegisterScreen}  />
