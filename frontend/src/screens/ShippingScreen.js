@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
 import { saveShipping } from '../actions/cartActions'
 import { BtnSubmit } from '../components/BtnSubmit'
+import CheckoutSteps from '../components/CheckoutSteps'
 
 const ShippingScreen = ({ history }) => {
     const cart = useSelector(state => state.cart)
@@ -25,6 +26,7 @@ const ShippingScreen = ({ history }) => {
     return (
         <ShippingContainer>
             <ShippingContent>
+                <CheckoutSteps step1 step2 />
                 <ContentTitle>Shipping</ContentTitle>
                 <ShippingForm onSubmit={submitHandler}>
                     <FormItem>
@@ -123,20 +125,20 @@ const ShippingContent = styled.div`
     background: #f7f7f7;
     border-radius: 4px;
     margin: 2rem 0;
-    min-width: 400px;
+    /* min-width: 400px; */
 `; 
 
 const ContentTitle = styled.h2`
     padding: 1rem;
     font-size: 1.6rem;
-    
+    text-transform: uppercase;
 `; 
 
 const ShippingForm = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 300px;
+    min-width: 500px;
 `; 
 
 const FormItem = styled.div`
