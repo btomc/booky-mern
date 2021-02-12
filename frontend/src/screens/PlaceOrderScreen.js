@@ -55,7 +55,7 @@ const PlaceOrderScreen = ({ history }) => {
                     <h3>Shipping</h3>
                     <ItemText>
                         <strong>Method: </strong>
-                        {cart.shippingMethod}
+                        {cart.shipping.shippingMethod}
                     </ItemText>
                     <ItemText>
                         <strong>Address: </strong>
@@ -140,6 +140,7 @@ const PlaceOrderContainer = styled.div`
 
     @media screen and (max-width: 999px) {
         flex-direction: column;
+        align-items: center;
     }
 `;
 
@@ -147,7 +148,6 @@ const OrderContent = styled.div`
     background: #f7f7f7;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     background: #f7f7f7;
     border-radius: 4px;
     margin: 2rem 0;
@@ -171,19 +171,30 @@ const ItemText = styled.p`
 const OrderItems = styled.div`
     display: flex;
     margin-bottom: .5rem;
+    flex-direction: column;
+
+    @media screen and (max-width: 545px) {
+        align-items: center;
+    }
 `;
 
 const ItemsWrap = styled.div`
     display: flex;
     justify-content: space-around;
+    margin-top: 1rem;
+
+    @media screen and (max-width: 545px) {
+        flex-direction: column;
+        align-items: flex-start;
+        align-items: center;
+    }
 `;
 
 const ImgWrap = styled.div`
     height: 5.5rem;
     width: 4rem;
 
- 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 545px) {
         width: 200px;
         height: 280px;
     }
@@ -198,6 +209,11 @@ const NameWrap = styled.div`
     margin: 0 2rem;
     max-width: 250px;
     min-width: 150px;
+
+    @media screen and (max-width: 545px) {
+        margin: 1rem;
+        text-align: center;
+    }
 `;
 const Title = styled(Link)`
     color: #514cad;
@@ -207,6 +223,10 @@ const Title = styled(Link)`
 `;
 const ItemP = styled.p`
     font-weight: 500;
+
+    @media screen and (max-width: 545px) {
+        text-align: center;
+    }
 `;
 const OrderSummary = styled.div`
     display: flex;

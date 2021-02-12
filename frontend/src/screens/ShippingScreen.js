@@ -34,9 +34,8 @@ const ShippingScreen = ({ history }) => {
                         <FormRadio>
                             <FormInput
                                 type='radio'
-                                label='Parcel'
                                 name='shippingMethod'
-                                value={'Parcel-7$'}
+                                value={'Parcel'}
                                 checked
                                 onChange={(e) => setShippingMethod(e.target.value)}
                                 ></FormInput>
@@ -126,6 +125,10 @@ const ShippingContent = styled.div`
     border-radius: 4px;
     margin: 2rem 0;
     /* min-width: 400px; */
+
+    @media screen and (max-width: 685px) {
+        padding: 0 2rem;
+    }
 `; 
 
 const ContentTitle = styled.h2`
@@ -138,7 +141,15 @@ const ShippingForm = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 500px;
+    min-width: 400px;
+
+    @media screen and (max-width: 685px) {
+        width: 90%;
+    }
+
+    @media screen and (max-width: 485px) {
+        min-width: 100%;
+    }
 `; 
 
 const FormItem = styled.div`
@@ -146,6 +157,10 @@ const FormItem = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
+
+    @media screen and (max-width: 685px) {
+        width: 90%;
+    }
 `;
 
 const FormMainLabel = styled.label`

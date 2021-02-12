@@ -81,6 +81,10 @@ const PaymentForm = styled.form`
     flex-direction: column;
     align-items: center;
     min-width: 500px;
+
+    @media screen and (max-width: 685px) {
+        min-width: 100%;
+    }
 `; 
 
 const FormItem = styled.div`
@@ -88,6 +92,10 @@ const FormItem = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
+
+    @media screen and (max-width: 685px) {
+        width: 90%;
+    }
 `;
 
 const FormMainLabel = styled.label`
