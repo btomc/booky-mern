@@ -9,7 +9,7 @@ const ShippingScreen = ({ history }) => {
     const cart = useSelector(state => state.cart)
     const { shipping } = cart
 
-    const [shippingMethod, setShippingMethod] = useState('7$')
+    const [shippingMethod, setShippingMethod] = useState('Parcel-7$')
     const [address, setAddress] = useState(shipping.address)
     const [city, setCity] = useState(shipping.city)
     const [postalCode, setPostalCode] = useState(shipping.postalCode)
@@ -36,7 +36,7 @@ const ShippingScreen = ({ history }) => {
                                 type='radio'
                                 label='Parcel'
                                 name='shippingMethod'
-                                value={`Parcel 7$`}
+                                value={'Parcel-7$'}
                                 checked
                                 onChange={(e) => setShippingMethod(e.target.value)}
                                 ></FormInput>
@@ -48,7 +48,7 @@ const ShippingScreen = ({ history }) => {
                                 type='radio'
                                 label='UPS courier 10$'
                                 name='shippingMethod'
-                                value={`10$`}
+                                value={'UPS-10$'}
                                 onChange={(e) => setShippingMethod(e.target.value)}
                                 ></FormInput>
                             <FormLabel>UPS courier 10$</FormLabel>

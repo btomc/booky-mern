@@ -63,6 +63,7 @@ const NavItem = styled.div`
 
 const ItemLink = styled(Link)`
     border-radius: 5px;
+    text-decoration: none;
 `;
 
 const Button = styled.button`
