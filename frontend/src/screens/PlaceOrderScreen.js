@@ -1,13 +1,16 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Button } from '../components/Button'
 import CheckoutSteps from '../components/CheckoutSteps'
 import Message from '../components/Message'
+import { createOrder } from '../actions/orderActions'
 
 
-const PlaceOrderScreen = () => {
+const PlaceOrderScreen = ({ history }) => {
+    const dispatch = useDispatch()
+
     const cart = useSelector(state => state.cart)
 
     // Calculate prices
@@ -22,8 +25,26 @@ const PlaceOrderScreen = () => {
     cart.shippingPrice = addDecimals(cart.itemsPrice > 50 ? 0 : (7 || 10))
     cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice)).toFixed(2)
 
+    const orderCreate = useSelector(state => state.orderCreate)
+    const { order, success, error } = orderCreate
+
+    useEffect(() => {
+        if(success) {
+            history.push(`/order/${order._id}`)
+        }
+        // eslint-disable-next-line
+    }, [history, success])
+
     const placeOrderHandler = () => {
-        console.log('order')
+        dispatch(createOrder({
+            orderItems: cart.cartItems,
+            shipping: cart.shipping,
+            shippingMethod: cart.shippingMethod,
+            paymentMethod: cart.paymentMethod,
+            itemsPrice: cart.itemsPrice,
+            shippingPrice: cart.shippingPrice,
+            totalPrice: cart.totalPrice,
+        }))
     }
 
     return (
@@ -34,7 +55,7 @@ const PlaceOrderScreen = () => {
                     <h3>Shipping</h3>
                     <ItemText>
                         <strong>Method: </strong>
-                        {cart.shipping.shippingMethod}
+                        {cart.shippingMethod}
                     </ItemText>
                     <ItemText>
                         <strong>Address: </strong>
@@ -90,6 +111,10 @@ const PlaceOrderScreen = () => {
                         <OrderText>
                             <strong>Total</strong>
                             <ItemP>${cart.totalPrice}</ItemP>
+                        </OrderText>
+
+                        <OrderText>
+                            {error && <Message>{error}</Message>}
                         </OrderText>
 
                         <Button 

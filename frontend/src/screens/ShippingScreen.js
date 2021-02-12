@@ -43,7 +43,7 @@ const ShippingScreen = ({ history }) => {
                             <FormLabel>Parcel 7$</FormLabel>
                         </FormRadio>
 
-                        <FormRadio>
+                        {/* <FormRadio>
                             <FormInput
                                 type='radio'
                                 label='UPS courier 10$'
@@ -52,7 +52,7 @@ const ShippingScreen = ({ history }) => {
                                 onChange={(e) => setShippingMethod(e.target.value)}
                                 ></FormInput>
                             <FormLabel>UPS courier 10$</FormLabel>
-                        </FormRadio>
+                        </FormRadio> */}
                     </FormItem>
 
                     <FormItem>
