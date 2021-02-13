@@ -15,11 +15,12 @@ const MessageContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 1rem;
 `;
 
 const MessageText = styled.p`
-    font-size: 1.2rem;
-    padding: 1rem;
+    font-size: 1.1rem;
+    padding: .8rem;
     background: ${({ variant }) => variant ? '#814cad' : '#e84040'};
     color: #fff;
     border-radius: 4px;
