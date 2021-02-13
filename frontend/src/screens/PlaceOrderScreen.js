@@ -15,14 +15,14 @@ const PlaceOrderScreen = ({ history }) => {
 
     // Calculate prices
     const addDecimals = (num) => {
-        return (Math.round(num * 100 / 100).toFixed(2))
+        return (num * 100 / 100).toFixed(2)
     }
 
     cart.itemsPrice = addDecimals(cart.cartItems.reduce(
         (acc, item) => acc + item.price * item.qty,
         0
     ))
-    cart.shippingPrice = addDecimals(cart.itemsPrice > 50 ? 0 : (7 || 10))
+    cart.shippingPrice = addDecimals(cart.itemsPrice > 50 ? 0 : 7)
     cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice)).toFixed(2)
 
     const orderCreate = useSelector(state => state.orderCreate)
