@@ -1,10 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import {FaTimes} from 'react-icons/fa'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import {BtnSubmit} from '../components/BtnSubmit'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
+import { myListOrders } from '../actions/orderActions'
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
 
 const ProfileScreen = ({ location, history }) => {
@@ -25,6 +28,9 @@ const ProfileScreen = ({ location, history }) => {
     const userUpdateProfile = useSelector(state => state.userUpdateProfile)
     const { success } = userUpdateProfile
 
+    const orderMyList = useSelector(state => state.orderMyList)
+    const { loading: loadingOrders, error: errorOrders, orders } = orderMyList
+
     useEffect(() => {
         if(!userInfo) {
             history.push('/login')
@@ -32,6 +38,7 @@ const ProfileScreen = ({ location, history }) => {
             if (!user || !user.name || success) {
                 dispatch({ type: USER_UPDATE_PROFILE_RESET})
                 dispatch(getUserDetails('profile'))
+                dispatch(myListOrders())
             } else {
                 setName(user.name)
                 setEmail(user.email)
@@ -101,7 +108,47 @@ const ProfileScreen = ({ location, history }) => {
                 </ProfileForm>
             </ProfileContent>
             <OrderContent>
-                My Orders
+                <h2>My Orders</h2>
+                {loadingOrders ? <Loader />
+                    : errorOrders ? <Message>{errorOrders}</Message>
+                    : (
+                        <OrdersWrap>
+                            <OrdersTitle>
+                                <TitleId>ID</TitleId>
+                                <OrderP>DATE</OrderP>
+                                <OrderTotal>TOTAL</OrderTotal>
+                                <OrderP>PAID</OrderP>
+                                <OrderP>SENT</OrderP>
+                                <OrderBtn></OrderBtn>
+                            </OrdersTitle>
+                            <OrdersItems>
+                                {orders.map(order => (
+                                    <ItemsWrap key={order._id}>
+                                        <ItemId>{order._id}</ItemId>
+                                        <Item>{order.createdAt.substring(0, 10)}</Item>
+                                        <ItemTotal>${order.totalPrice}</ItemTotal>
+                                        <Item>{order.isPaid 
+                                            ? (order.paidAt.substring(0, 10))
+                                            : (
+                                                <FaTimes style={{ color: 'red'}} />
+                                            )}
+                                        </Item>
+                                        <Item>{order.isSent 
+                                            ? (order.sentAt.substring(0, 10))
+                                            : (
+                                                <FaTimes style={{ color: 'red'}} />
+                                            )}
+                                        </Item>
+                                      
+                                        <BtnWrap to={`/order/${order._id}`}>
+                                            <Btn>Details</Btn>
+                                        </BtnWrap>
+                                     
+                                    </ItemsWrap>
+                                ))}
+                            </OrdersItems>
+                        </OrdersWrap>
+                    )}
             </OrderContent>
         </ProfileContainer>
     )
@@ -114,6 +161,11 @@ const ProfileContainer = styled.div`
     background: #514cad;
     display: flex;
     justify-content: space-evenly;
+
+    @media screen and (max-width: 1030px) {
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 const ProfileContent = styled.div`
@@ -159,6 +211,84 @@ const FormInput = styled.input`
 `;
 
 const OrderContent = styled.div`
-    width: 50%;
+    /* width: 50%; */
+    background: #f7f7f7;
+    margin: 2rem 1rem;
+    border-radius: 4px;
+    min-height: 250px;
+    min-width: 500px;
+    max-width: 700px;
+
+    h2 {
+        padding: 1.8rem 1.5rem;
+        text-transform: uppercase;
+    }
+
+    
 `;
 
+const OrdersWrap = styled.div`
+    margin: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    /* width: 100%; */
+`;
+
+const OrdersTitle = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+    margin-bottom: 1rem;
+`;
+
+const TitleId = styled.p`
+    width: 220px;
+`;
+
+const OrderP = styled.p`
+    width: 90px;
+`;
+
+const OrderTotal = styled.p`
+    width: 70px;
+`;
+
+const OrderBtn = styled.p``;
+
+const OrdersItems = styled.div`
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    
+`;
+
+const ItemsWrap = styled.div`
+    display: flex;
+    margin-bottom: .8rem;
+`;
+
+const Item = styled.p`
+    width: 90px;
+    text-align: center;
+`;
+
+const ItemId = styled.p`
+    width: 220px;
+`;
+
+const ItemTotal = styled.p`
+    width: 70px;
+    text-align: center;
+`;
+
+const Btn = styled.button`
+    padding: .6rem;
+    font-size: .9rem;
+    border: none;
+    color: #f2f2f2;
+    background: #171e40;
+    transition: 0.2s ease-out;
+    cursor: pointer;
+`;
+
+const BtnWrap = styled(Link)``;

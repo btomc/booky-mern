@@ -6,7 +6,7 @@ export const Button = styled.button`
     color: #f2f2f2;
     transition: 0.2s ease-out;
     cursor: pointer;
-    min-width: 100px;
+    /* min-width: 100px; */
     max-width: 200px;
     outline: none;
     display: flex;
