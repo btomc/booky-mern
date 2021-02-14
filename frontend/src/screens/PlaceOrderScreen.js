@@ -6,6 +6,7 @@ import { Button } from '../components/Button'
 import CheckoutSteps from '../components/CheckoutSteps'
 import Message from '../components/Message'
 import { createOrder } from '../actions/orderActions'
+import { CART_RESET } from '../constants/cartConstants'
 
 
 const PlaceOrderScreen = ({ history }) => {
@@ -31,6 +32,7 @@ const PlaceOrderScreen = ({ history }) => {
     useEffect(() => {
         if(success) {
             history.push(`/order/${order._id}`)
+            dispatch({ type: CART_RESET })
         }
         // eslint-disable-next-line
     }, [history, success])
