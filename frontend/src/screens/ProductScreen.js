@@ -149,7 +149,10 @@ const ProductContainer = styled.div`
     flex-direction: column;
     color: #171e40;
     /* background: #bebafc; */
-    background: rgba(129,76,173,0.5);
+    background: rgba(129,76,173,0.3);
+    /* background: #e2e2e2; */
+    background: #ddd;
+    background: rgba(81,76,173,0.6);
 `;
 
 const BtnBack = styled(Link)`
@@ -196,7 +199,7 @@ const PictureWrap = styled.div`
     border-radius: 4px;
     margin: 2rem 1rem 1rem 0;
     background: #f7f7f7;
-    box-shadow: 0 1.5rem 4rem rgba(0,0,0, .15);
+    /* box-shadow: 0 1.5rem 4rem rgba(0,0,0, .15); */
 
     @media screen and (max-width: 920px) {
         margin-right: 0;
@@ -227,7 +230,7 @@ const ProductInfo = styled.div`
     display: flex;
     flex-direction: column;
     background: #f7f7f7;
-    box-shadow: 0 1.5rem 4rem rgba(0,0,0, .15);
+    /* box-shadow: 0 1.5rem 4rem rgba(0,0,0, .15); */
     margin: 2rem 0;
     border-radius: 4px;
 
@@ -272,7 +275,7 @@ const ProductWrap = styled.div`
     justify-content: space-evenly;
     margin: 2rem 0 2rem 1rem;
     /* background: #dddbfc; */
-    background: #e7e5fc;
+    background: #d3d1fc;
     min-width: 200px;
     border-radius: 4px;
 
@@ -336,9 +339,9 @@ const ReviewsContainer = styled.div`
 `;
 
 const ReviewTitle = styled.h3`
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     padding: 1.5rem;
-    text-transform: uppercase;
+    color: #514cad;
 `;
 const ReviewsWrap = styled.div`
     display: flex;
@@ -363,6 +366,7 @@ const ReviewsFormWrap = styled.div`
     h3 {
         font-size: 1.6rem;
         padding: 1.5rem;
+        color: #514cad;
     }
 `;
 

@@ -110,8 +110,9 @@ const CartContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background: rgba(129,76,173,0.5);
-    /* background: rgba(129,76,173,0.3); */
+    /* background: rgba(129,76,173,0.2); */
+    /* background: #ddd; */
+    background: rgba(81,76,173,0.7);
     color: #171e40;
 
     @media screen and (max-width: 890px) {
@@ -125,7 +126,6 @@ const CartContent = styled.div`
     flex-direction: column;
     width: 60%;
     background: #f7f7f7;
-    /* background: #e7e5fc; */
     margin: 2rem;
     border-radius: 4px;
     min-height: 340px;
@@ -252,7 +252,7 @@ const Icon = styled.i`
 
 const CartSummary = styled.div`
     width: 35%;
-    background: #e7e5fc;
+    background: #f7f7f7;
     border-radius: 4px;
     min-height: 340px;
     display: flex;

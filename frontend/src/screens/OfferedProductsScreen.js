@@ -5,18 +5,23 @@ import Product from '../components/Product'
 import Loader from '../components/Loader'
 import { listProducts } from '../actions/productActions'
 import Message from '../components/Message'
+import SearchBox from '../components/SearchBox'
 
-const OfferedProductsScreen = () => {
+const OfferedProductsScreen = ({ match, history }) => {
+    const keyword = match.params.keyword
+
     const dispatch = useDispatch()
 
     const productList = useSelector(state => state.productList)
     const { loading, error, products } = productList
 
     useEffect(() => {
-        dispatch(listProducts())
-    }, [dispatch])
+        dispatch(listProducts(keyword))
+    }, [dispatch, keyword])
 
     return (
+        <>
+        <SearchBox history={history} />
         <ProductsContainer>
             {loading ? (
                 <Loader />
@@ -32,6 +37,7 @@ const OfferedProductsScreen = () => {
                 </Row>
             )}
         </ProductsContainer>
+        </>
     )
 }
 
@@ -43,8 +49,7 @@ const ProductsContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background: #ceccfc; */
-    background: rgba(129,76,173,0.3);
+    background: rgba(81,76,173,0.1);
     min-height: 375px;
 `;
 

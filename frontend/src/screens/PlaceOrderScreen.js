@@ -138,6 +138,7 @@ const PlaceOrderContainer = styled.div`
     display: flex;
     justify-content: space-evenly;
     background: rgba(129,76,173,0.5);
+    background: rgba(81,76,173,0.8);
     color: #171e40;
 
     @media screen and (max-width: 999px) {

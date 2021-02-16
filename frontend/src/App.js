@@ -28,6 +28,7 @@ const App = () => {
         <Route path='/register' component={RegisterScreen}  />
         <Route path='/profile' component={ProfileScreen}  />
         <Route path='/products' component={OfferedProductsScreen}  />
+        <Route path='/search/:keyword' component={OfferedProductsScreen}  />
         <Route path='/product/:id' component={ProductScreen}  />
         <Route path='/cart/:id?' component={CartScreen}  />
         <Route path='/' component={HomeScreen} exact />

@@ -29,7 +29,7 @@ const Card = styled.div`
     align-items: center;
     justify-content: center;
     background: #f7f7f7;
-    box-shadow: 0 1.5rem 4rem rgba(0,0,0, .07);
+    box-shadow: 0 1.5rem 4rem rgba(0,0,0, .15);
     color: #171e40;
 `;
 

@@ -76,7 +76,8 @@ export default LoginScreen
 const LoginContainer = styled.div`
     display: flex;
     justify-content: center;
-    background: rgba(129,76,173,0.5);
+    background: rgba(81,76,173,0.8);
+    /* background: #514cad; */
     color: #fff;
     color: #171e40;
 `;
