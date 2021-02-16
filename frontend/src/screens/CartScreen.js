@@ -34,6 +34,8 @@ const CartScreen = ({ match, location, history}) => {
 
     return (
         <CartContainer>
+            <BtnBack to='/products'>Go Back</BtnBack>
+            <CartWrapper>
             <CartContent>
                 <CartH2>Shopping Cart</CartH2>
                 {cartItems.length === 0 ? (
@@ -100,6 +102,7 @@ const CartScreen = ({ match, location, history}) => {
                     </CardWrapItem>
                 </Card>
             </CartSummary>
+            </CartWrapper>
         </CartContainer>
     )
 }
@@ -109,6 +112,7 @@ export default CartScreen
 const CartContainer = styled.div`
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: flex-start;
     /* background: rgba(129,76,173,0.2); */
     /* background: #ddd; */
@@ -119,6 +123,36 @@ const CartContainer = styled.div`
         flex-direction: column;
         align-items: center;
     }
+`;
+
+const BtnBack = styled(Link)`
+    background: #171e40;
+    border: none;
+    color: #f2f2f2;
+    transition: 0.2s ease-out;
+    cursor: pointer;
+    min-width: 100px;
+    max-width: 200px;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    margin: 2rem 2rem 0 2rem;
+    width: 150px;
+
+    &:hover {
+        background: #464293;
+        transition: 0.2s ease-out;
+    }
+`;
+
+const CartWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    width: 100%;
 `;
 
 const CartContent = styled.div`

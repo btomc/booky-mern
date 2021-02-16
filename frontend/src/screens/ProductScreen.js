@@ -148,11 +148,8 @@ const ProductContainer = styled.div`
     display: flex;
     flex-direction: column;
     color: #171e40;
-    /* background: #bebafc; */
-    background: rgba(129,76,173,0.3);
-    /* background: #e2e2e2; */
     background: #ddd;
-    background: rgba(81,76,173,0.6);
+    background: rgba(81,76,173,0.7);
 `;
 
 const BtnBack = styled(Link)`
@@ -199,7 +196,6 @@ const PictureWrap = styled.div`
     border-radius: 4px;
     margin: 2rem 1rem 1rem 0;
     background: #f7f7f7;
-    /* box-shadow: 0 1.5rem 4rem rgba(0,0,0, .15); */
 
     @media screen and (max-width: 920px) {
         margin-right: 0;
@@ -274,8 +270,7 @@ const ProductWrap = styled.div`
     align-items: center;
     justify-content: space-evenly;
     margin: 2rem 0 2rem 1rem;
-    /* background: #dddbfc; */
-    background: #d3d1fc;
+    background: #f7f2f7;
     min-width: 200px;
     border-radius: 4px;
 
