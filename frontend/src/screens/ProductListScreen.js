@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import { listProducts } from '../actions/productActions'
+import { listProducts, deleteProduct } from '../actions/productActions'
 import {BsPlus} from 'react-icons/bs'
 import {FaTrash} from 'react-icons/fa'
 import {AiTwotoneEdit} from 'react-icons/ai'
@@ -15,6 +15,9 @@ const ProductListScreen = ({ history, match }) => {
     const productList = useSelector((state) => state.productList)
     const { loading, error, products } = productList
 
+    const productDelete = useSelector((state) => state.productList)
+    const { loading: loadingDelete, error: errorDelete, success: successDelete } = productDelete
+
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
 
@@ -24,10 +27,12 @@ const ProductListScreen = ({ history, match }) => {
         } else {
             history.push('/login')
         }
-    }, [dispatch, history, userInfo])
+    }, [dispatch, history, userInfo, successDelete])
 
     const deleteHandler = (id) => {
-
+        if(window.confirm('Are you sure?')) {
+            dispatch(deleteProduct(id))
+        }
     }
 
     const createProductHandler = (product) => {
@@ -40,6 +45,8 @@ const ProductListScreen = ({ history, match }) => {
                 <h2>Products</h2>
                 <BtnCreate><BsPlus style={{ fontSize: '1.5rem'}} /> Create Product</BtnCreate>
             </ContainerTop>
+            {loadingDelete && <Loader />}
+            {errorDelete && <Message>{errorDelete}</Message>}
             {loading ? <Loader /> : error ? <Message>{error}</Message>
             : (
                 <ProductsWrap>
@@ -63,7 +70,7 @@ const ProductListScreen = ({ history, match }) => {
                                     <BtnLink to={`/admin/product/${product._id}/edit`}>
                                         <BtnEdit><Icon style={{ background: '#f7d600', color: '#514cad'}}><AiTwotoneEdit /></Icon></BtnEdit>
                                     </BtnLink>
-                                    <BtnDelete><Icon><FaTrash /></Icon></BtnDelete>
+                                    <BtnDelete onClick={() => deleteHandler(product._id)}><Icon><FaTrash /></Icon></BtnDelete>
                                 </Btns>
                             </ItemsWrap>
                         ))}
