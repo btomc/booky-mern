@@ -33,7 +33,7 @@ const ProductListScreen = ({ history, match }) => {
         }
 
         if(successCreate) {
-            history.push(`/admin/product${createdProduct._id}/edit`)
+            history.push(`/admin/product/${createdProduct._id}/edit`)
         } else {
             dispatch(listProducts())
         }
@@ -81,7 +81,7 @@ const ProductListScreen = ({ history, match }) => {
                                 <Item>{product.genre}</Item>
                                 <Btns>
                                     <BtnLink to={`/admin/product/${product._id}/edit`}>
-                                        <BtnEdit><Icon style={{ background: '#f7d600', color: '#514cad'}}><AiTwotoneEdit /></Icon></BtnEdit>
+                                        <BtnEdit><Icon style={{ background: '#f7d600', color: '#464293'}}><AiTwotoneEdit /></Icon></BtnEdit>
                                     </BtnLink>
                                     <BtnDelete onClick={() => deleteHandler(product._id)}><Icon><FaTrash /></Icon></BtnDelete>
                                 </Btns>
@@ -154,7 +154,7 @@ const ProductsTitle = styled.div`
 `;
 
 const TitleId = styled.p`
-    width: 270px;
+    width: 250px;
 `;
 
 const ProductP = styled.p`
@@ -186,7 +186,7 @@ const ItemPrice = styled.p`
 `;
 
 const ItemId = styled.p`
-    width: 270px;
+    width: 250px;
 `;
 
 const Icon = styled.i`
