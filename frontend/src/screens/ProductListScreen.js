@@ -1,13 +1,14 @@
-import React, {useEffect, UseEffect} from 'react'
+import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import { listProducts, deleteProduct } from '../actions/productActions'
+import { listProducts, deleteProduct, createProduct } from '../actions/productActions'
 import {BsPlus} from 'react-icons/bs'
 import {FaTrash} from 'react-icons/fa'
 import {AiTwotoneEdit} from 'react-icons/ai'
+import { PRODUCT_CREATE_RESET } from '../constants/productConstants'
 
 const ProductListScreen = ({ history, match }) => {
     const dispatch = useDispatch()
@@ -18,16 +19,26 @@ const ProductListScreen = ({ history, match }) => {
     const productDelete = useSelector((state) => state.productList)
     const { loading: loadingDelete, error: errorDelete, success: successDelete } = productDelete
 
+    const productCreate = useSelector((state) => state.productCreate)
+    const { loading: loadingCreate, error: errorCreate, success: successCreate, product: createdProduct } = productCreate
+
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
 
     useEffect(() => {
-        if(userInfo && userInfo.isAdmin) {
-            dispatch(listProducts())
-        } else {
+        dispatch({ type: PRODUCT_CREATE_RESET })
+
+        if(!userInfo.isAdmin) {
             history.push('/login')
         }
-    }, [dispatch, history, userInfo, successDelete])
+
+        if(successCreate) {
+            history.push(`/admin/product${createdProduct._id}/edit`)
+        } else {
+            dispatch(listProducts())
+        }
+
+    }, [dispatch, history, userInfo, successDelete, successCreate, createdProduct])
 
     const deleteHandler = (id) => {
         if(window.confirm('Are you sure?')) {
@@ -36,17 +47,19 @@ const ProductListScreen = ({ history, match }) => {
     }
 
     const createProductHandler = (product) => {
-
+        dispatch(createProduct())
     }
 
     return (
         <ProductListContainer>
             <ContainerTop>
                 <h2>Products</h2>
-                <BtnCreate><BsPlus style={{ fontSize: '1.5rem'}} /> Create Product</BtnCreate>
+                <BtnCreate onClick={createProductHandler}><BsPlus style={{ fontSize: '1.5rem'}} /> Create Product</BtnCreate>
             </ContainerTop>
             {loadingDelete && <Loader />}
             {errorDelete && <Message>{errorDelete}</Message>}
+            {loadingCreate && <Loader />}
+            {errorCreate && <Message>{errorCreate}</Message>}
             {loading ? <Loader /> : error ? <Message>{error}</Message>
             : (
                 <ProductsWrap>

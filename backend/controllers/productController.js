@@ -130,7 +130,10 @@ const createProduct = asyncHandler(async (req, res) => {
         genre: 'Sample genre',
         plot: 'Sample plot',
         countInStock: 0,
-        numReviews: 0
+        numReviews: 0,
+        publicationDate: '01/01/2020',
+        binding: 'Paperback',
+        pages: 0
     })
 
     const createdProduct = await product.save()
@@ -150,6 +153,9 @@ const updateProduct = asyncHandler(async (req, res) => {
         plot,
         countInStock,
         numReviews,
+        publicationDate,
+        binding,
+        pages
     } = req.body
 
     const product = await Product.findById(req.params.id)
@@ -163,6 +169,9 @@ const updateProduct = asyncHandler(async (req, res) => {
         product.plot = plot
         product.countInStock = countInStock
         product.numReviews = numReviews
+        product.publicationDate = publicationDate
+        product.binding = binding
+        product.pages = pages
 
         const updatedProduct = await product.save()
         res.json(updatedProduct)
