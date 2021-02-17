@@ -126,7 +126,7 @@ const createProduct = asyncHandler(async (req, res) => {
         author: 'Sample author',
         price: 0,
         user: req.user._id,
-        image: '/images/sample/png',
+        image: '/images/sample.jpg',
         genre: 'Sample genre',
         plot: 'Sample plot',
         countInStock: 0,

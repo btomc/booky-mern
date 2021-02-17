@@ -4,8 +4,9 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
-import { listProductDetails } from '../actions/productActions'
 import { BtnSubmit } from '../components/BtnSubmit'
+import { listProductDetails, updateProduct } from '../actions/productActions'
+import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
 
 
 const ProductEditScreen = ({ match, history }) => {
@@ -27,22 +28,49 @@ const ProductEditScreen = ({ match, history }) => {
     const productDetails = useSelector(state => state.productDetails)
     const { loading, error, product } = productDetails
 
+    const productUpdate = useSelector(state => state.productUpdate)
+    const { loading: loadingUpdate, error: errorUpdate, success: successUpdate } = productUpdate
+
     useEffect(() => {
-        if(!product.title || product._id !== productId) {
-            dispatch(listProductDetails(productId))
+        if(successUpdate) {
+            dispatch({ type: PRODUCT_UPDATE_RESET })
+            history.push('/admin/productlist')
         } else {
-            setTitle(product.title)
-            setAuthor(product.author)
-            setPrice(product.price)
-            setImage(product.image)
-            setGenre(product.genre)
-            setPlot(product.plot)
-            setCountInStock(product.countInStock)
-            setPublicationDate(product.publicationDate)
-            setBinding(product.binding)
-            setPages(product.pages)
+            if(!product.title || product._id !== productId) {
+                dispatch(listProductDetails(productId))
+            } else {
+                setTitle(product.title)
+                setAuthor(product.author)
+                setPrice(product.price)
+                setImage(product.image)
+                setGenre(product.genre)
+                setPlot(product.plot)
+                setCountInStock(product.countInStock)
+                setPublicationDate(product.publicationDate)
+                setBinding(product.binding)
+                setPages(product.pages)
+            }
         }
-    }, [product, dispatch, history, productId])
+        
+    }, [product, dispatch, history, productId, successUpdate])
+
+
+    const submitHandler = (e) => {
+        e.preventDefault()
+        dispatch(updateProduct({
+            _id: productId,
+            title,
+            author,
+            price,
+            image,
+            genre,
+            plot,
+            countInStock,
+            publicationDate,
+            binding,
+            pages
+        }))
+    }
 
     return (
         <EditContainer>
@@ -51,12 +79,14 @@ const ProductEditScreen = ({ match, history }) => {
             </BtnWrap>
             <EditContent>
                 <h2>Edit Product</h2>
+                {loadingUpdate && <Loader />}
+                {errorUpdate && <Message>{errorUpdate}</Message>}
                 {loading ? (
                     <Loader /> 
                 ) : error ? (
                     <Message>{error}</Message>
                 ) : (
-                    <EditForm>
+                    <EditForm onSubmit={submitHandler}>
                         <FormItem>
                             <FormLabel>Title</FormLabel>
                             <FormInput 
@@ -246,7 +276,7 @@ const FormInput = styled.input`
 
 const FormText = styled.textarea`
     resize: none;
-    height: 90px;
+    height: 140px;
     border-radius: 4px;
     border: none;
     outline: none;
