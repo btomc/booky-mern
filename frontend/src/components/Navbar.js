@@ -9,8 +9,10 @@ import { logout } from '../actions/userActions'
 
 const Navbar = () => {
     const [click, setClick] = useState(false)
+    const [clickAdmin, setClickAdmin] = useState(false)
 
     const handleClick = () => setClick(!click)
+    const handleClickAdmin = () => setClickAdmin(!clickAdmin)
 
     const dispatch = useDispatch()
 
@@ -36,20 +38,35 @@ const Navbar = () => {
 
                     {userInfo ? (
                         <>
-                        <ClientName onClick={handleClick} >
+                        <MenuName onClick={handleClick} >
                             <p>{userInfo.name}</p>
                             <IoMdArrowDropdown />
-                        </ClientName>
-                        <ClientMenu onClick={handleClick} click={click}>
+                        </MenuName>
+                        <MenuWrap onClick={handleClick} click={click}>
                             <MenuItem to='/profile'>
                                 <ItemText>Profile</ItemText>
                             </MenuItem>
                             <LogoutBtn onClick={logoutHandler}>Logout</LogoutBtn>
-                        </ClientMenu>
+                        </MenuWrap>
                         </>
-                    ) : <MenuItem to='/login'>
+                    ) : (
+                        <MenuItem to='/login'>
                             <ItemText>Sign In</ItemText>
-                        </MenuItem>}
+                        </MenuItem>
+                    )}
+                    {userInfo && userInfo.isAdmin && (
+                        <>
+                            <MenuName onClick={handleClickAdmin} >
+                                <p>{userInfo.name}</p>
+                                <IoMdArrowDropdown />
+                            </MenuName>
+                            <MenuWrap onClick={handleClickAdmin} click={clickAdmin}>
+                                <MenuItem to='/admin/productlist'>
+                                    <ItemText>Products</ItemText>
+                                </MenuItem>
+                            </MenuWrap>
+                        </>
+                    )}
                 </NavMenu>
             </NavContainer>
         </Nav>
@@ -103,7 +120,6 @@ const NavMenu = styled.div`
 const Cart = styled(Link)`
     display: flex;
     align-items: center;
-    margin-right: 1rem;
     cursor: pointer;
     text-decoration: none;
     color: #514cad;
@@ -122,13 +138,14 @@ const CartIcon = styled(MdShoppingCart)`
 `;
 
 const CartText = styled.p`
-    margin-left: 2px;
+    margin: 0 10px 0 2px;
 `;
 
-const ClientName = styled.div`
+const MenuName = styled.div`
     display: flex;
     align-items: center;
     cursor: pointer;
+    margin-left: 1rem;
 
     @media screen and (max-width: 475px) {
         p {
@@ -137,11 +154,12 @@ const ClientName = styled.div`
     }
 `;
 
-const ClientMenu = styled.div`
+const MenuWrap = styled.div`
     background: ${({ click }) => (click ? '#eaeaea' : 'transparent')};
     display: block;
     position: absolute;
     top: ${({ click }) => (click ? '30px' : '-300px')};
+    right: 5rem;
     right: 0;
     z-index: 999;
     border-radius: 2px;

@@ -44,7 +44,7 @@ const TopProducts = () => {
                         ))}
 
                     </TopContent>
-                    <BtnWrap to='/products'><BtnOther>View other <BsArrowRightShort /></BtnOther></BtnWrap>
+                    <BtnWrap to='/products'><BtnOther>View others <BsArrowRightShort  style={{ fontSize: '1.5rem'}} /></BtnOther></BtnWrap>
                 </>
             )}
         </TopContainer>
@@ -150,6 +150,7 @@ const BtnOther = styled.button`
     text-decoration: none;
     background: transparent;
     font-size: 1.1rem;
+    padding: .8rem;
 
     &:hover {
         background: #464293;
