@@ -23,7 +23,7 @@ export default Product
 const Card = styled.div`
     border-radius: 4px;
     width: 280px;
-    min-height: 530px;
+    min-height: 540px;
     display: flex;
     flex-direction: column;
     align-items: center;
