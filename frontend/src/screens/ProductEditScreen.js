@@ -1,6 +1,7 @@
 import React,{ useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
@@ -22,6 +23,7 @@ const ProductEditScreen = ({ match, history }) => {
     const [publicationDate, setPublicationDate] = useState('')
     const [binding, setBinding] = useState('')
     const [pages, setPages] = useState(0)
+    const [uploading, setUploading] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -54,6 +56,28 @@ const ProductEditScreen = ({ match, history }) => {
         
     }, [product, dispatch, history, productId, successUpdate])
 
+    const uploadFileHandler = async(e) => {
+        const file = e.target.files[0]
+        const formData = new FormData()
+        formData.append('image', file)
+        setUploading(true)
+
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+
+            const { data } = await axios.post('/api/upload', formData, config)
+
+            setImage(data)
+            setUploading(false)
+        } catch (error) {
+            console.error(error)
+            setUploading(false)
+        }
+    }
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -125,6 +149,11 @@ const ProductEditScreen = ({ match, history }) => {
                                 value={image}
                                 onChange={(e) => setImage(e.target.value)}
                             ></FormInput>
+                            <FormInput
+                                type='file'
+                                onChange={uploadFileHandler}
+                            ></FormInput>
+                            {uploading && <Loader />}
                         </FormItem>
 
                         <FormItem>

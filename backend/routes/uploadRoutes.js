@@ -1,4 +1,5 @@
 import express from 'express'
+import path from 'path'
 import multer from 'multer'
 const router = express.Router()
 
@@ -25,7 +26,7 @@ function checkFileType(file, cb) {
 
 const upload = multer({
     storage,
-    fileFilter: function(req, fils, cb) {
+    fileFilter: function(req, file, cb) {
         checkFileType(file, cb)
     }
 })
