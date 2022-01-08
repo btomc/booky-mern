@@ -75,7 +75,7 @@ const ProductListScreen = ({ history, match }) => {
                         {products.map(product => (
                             <ItemsWrap key={product._id}>
                                 <ItemId>{product._id}</ItemId>
-                                <Item>{product.title}</Item>
+                                <Item style={{ paddingRight: '1rem'}}>{product.title}</Item>
                                 <Item>{product.author}</Item>
                                 <ItemPrice>${product.price}</ItemPrice>
                                 <Item>{product.genre}</Item>
@@ -97,13 +97,15 @@ const ProductListScreen = ({ history, match }) => {
 export default ProductListScreen
 
 const ProductListContainer = styled.div`
-    background: #514cad;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #f2f2f2;
-    min-height: 600px;
-`;
+  /* background: #514cad; */
+  background: #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* color: #f2f2f2; */
+  color: #3f3b84;
+  min-height: 600px;
+`
 
 const ContainerTop = styled.div`
     display: flex;
@@ -144,6 +146,17 @@ const ProductsWrap = styled.div`
     flex-direction: column;
     width: 90%;
     align-items: center;
+
+    @media screen and (max-width: 975px) {
+        /* width: 90%; */
+        /* 
+        margin-right: 2.5rem; */
+        overflow-y: hidden;
+        overflow-x: scroll;
+        scrollbar-color: #171e40 #514cad;
+        scrollbar-width: thin;
+        margin-left: 1.5rem;
+    }
 `;
 
 const ProductsTitle = styled.div`
@@ -151,6 +164,10 @@ const ProductsTitle = styled.div`
     max-width: 1000px;
     margin-bottom: 1rem;
     text-align: left;
+
+    @media screen and (max-width: 975px) {
+        margin-left: 9rem;
+    }
 `;
 
 const TitleId = styled.p`
@@ -169,7 +186,11 @@ const ProductsItems = styled.div`
     display: flex;
     flex-direction: column;
     max-width: 1000px;
-    text-align: left;
+    text-align: left;    
+
+    @media screen and (max-width: 975px) {
+        margin-left: 12rem;
+    }
 `;
 
 const ItemsWrap = styled.div`
@@ -179,6 +200,11 @@ const ItemsWrap = styled.div`
 
 const Item = styled.p`
     width: 160px;
+
+    @media screen and (max-width: 975px) {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
 `;
 
 const ItemPrice = styled.p`

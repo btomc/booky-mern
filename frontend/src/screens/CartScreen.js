@@ -110,20 +110,20 @@ const CartScreen = ({ match, location, history}) => {
 export default CartScreen
 
 const CartContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: flex-start;
-    /* background: rgba(129,76,173,0.2); */
-    /* background: #ddd; */
-    background: rgba(81,76,173,0.7);
-    color: #171e40;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  /* background: rgba(81, 76, 173, 0.5); */
+  /* background: rgba(124, 121, 178, 0.7); */
+  background: #dddddd;
+  color: #171e40;
 
-    @media screen and (max-width: 890px) {
-        flex-direction: column;
-        align-items: center;
-    }
-`;
+  @media screen and (max-width: 890px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`
 
 const BtnBack = styled(Link)`
     background: #171e40;

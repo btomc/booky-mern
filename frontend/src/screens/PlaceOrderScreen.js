@@ -135,17 +135,17 @@ export default PlaceOrderScreen
 
 
 const PlaceOrderContainer = styled.div`
-    display: flex;
-    justify-content: space-evenly;
-    background: rgba(129,76,173,0.5);
-    background: rgba(81,76,173,0.8);
-    color: #171e40;
+  display: flex;
+  justify-content: space-evenly;
+  background: rgba(124, 121, 178, 0.7);
+  background: #dddddd;
+  color: #171e40;
 
-    @media screen and (max-width: 999px) {
-        flex-direction: column;
-        align-items: center;
-    }
-`;
+  @media screen and (max-width: 999px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`
 
 const OrderContent = styled.div`
     background: #f7f7f7;

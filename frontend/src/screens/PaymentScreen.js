@@ -53,13 +53,13 @@ const PaymentScreen = ({ history }) => {
 export default PaymentScreen
 
 const PaymentContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    /* background: rgba(129,76,173,0.5); */
-    background: rgba(81,76,173,0.8);
-    color: #fff;
-    color: #171e40;
-`;
+  display: flex;
+  justify-content: center;
+  background: rgba(124, 121, 178, 0.7);
+  background: #dddddd;
+  color: #fff;
+  color: #171e40;
+`
 
 const PaymentContent = styled.div`
     display: flex;

@@ -110,14 +110,12 @@ export default ShippingScreen
 
 
 const ShippingContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    background: rgba(129,76,173,0.5);
-    background: #514cad;
-    background: rgba(81,76,173,0.8);
-    color: #fff;
-    color: #171e40;
-`;
+  display: flex;
+  justify-content: center;
+  background: rgba(124, 121, 178, 0.7);
+  background: #dddddd;
+  color: #171e40;
+`
 
 const ShippingContent = styled.div`
     display: flex;

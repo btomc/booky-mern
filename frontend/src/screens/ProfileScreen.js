@@ -158,23 +158,24 @@ export default ProfileScreen
 
 
 const ProfileContainer = styled.div`
-    background: #514cad;
-    display: flex;
-    justify-content: space-evenly;
+  /* background: #514cad; */
+  background: #dddddd;
+  display: flex;
+  justify-content: space-evenly;
 
-    @media screen and (max-width: 1030px) {
-        flex-direction: column;
-        align-items: center;
-    }
-`;
-
-const ProfileContent = styled.div`
-    display: flex;
+  @media screen and (max-width: 1030px) {
     flex-direction: column;
     align-items: center;
-    padding: 2rem 0;
-    color: #fff;
-`;
+  }
+`
+
+const ProfileContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  color: #3f3b84;
+`
 
 const ProfileTitle = styled.h2`
     font-size: 1.5rem;
@@ -196,10 +197,10 @@ const FormItem = styled.div`
 `;
 
 const FormLabel = styled.label`
-    margin-bottom: 5px;
-    color: #fff;
-    font-weight: 600;
-`;
+  margin-bottom: 5px;
+  color: #3f3b84;
+  font-weight: 600;
+`
 
 const FormInput = styled.input`
     padding: 12px;
@@ -222,9 +223,13 @@ const OrderContent = styled.div`
     h2 {
         padding: 1.8rem 1.5rem;
         text-transform: uppercase;
+
+        
     }
 
-    
+    @media screen and (max-width: 675px) {
+        min-width: 100%;
+    }    
 `;
 
 const OrdersWrap = styled.div`
@@ -232,6 +237,14 @@ const OrdersWrap = styled.div`
     display: flex;
     flex-direction: column;
     /* width: 100%; */
+
+    @media screen and (max-width: 640px) {
+        overflow-y: hidden;
+        overflow-x: scroll;
+        scrollbar-color: #514cad #f7f7f7;
+        scrollbar-width: thin;
+        width: 85%;
+    }
 `;
 
 const OrdersTitle = styled.div`
@@ -258,8 +271,7 @@ const OrderBtn = styled.p``;
 const OrdersItems = styled.div`
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    
+    /* align-items: center; */    
 `;
 
 const ItemsWrap = styled.div`

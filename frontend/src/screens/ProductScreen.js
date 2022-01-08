@@ -67,7 +67,7 @@ const ProductScreen = ({ history, match }) => {
                             <Plot>{product.plot}</Plot>
                         </ProductInfo>
                         <ProductWrap>
-                            <ProductItem>Publication Date 
+                            <ProductItem>Publication Date
                                 <span>{product.publicationDate}</span>
                             </ProductItem>
                             <ProductItem>Binding: {product.binding}</ProductItem>
@@ -109,9 +109,9 @@ const ProductScreen = ({ history, match }) => {
                         {userInfo ? (
                             <ReviewForm onSubmit={submitHandler}>
                                 <FormLabel>Rating</FormLabel>
-                                <FormSelect 
-                                    as='select' 
-                                    value={rating} 
+                                <FormSelect
+                                    as='select'
+                                    value={rating}
                                     onChange={(e) => setRating(e.target.value)}
                                 >
                                     <option value=''>Select...</option>
@@ -122,8 +122,8 @@ const ProductScreen = ({ history, match }) => {
                                     <option value='5'>5 - Excellent</option>
                                 </FormSelect>
                                 <FormLabel>Comment</FormLabel>
-                                <FormComment 
-                                    as='textarea' 
+                                <FormComment
+                                    as='textarea'
                                     value={comment}
                                     onChange={(e) => setComment(e.target.value)}
                                 ></FormComment>
@@ -145,12 +145,13 @@ const ProductScreen = ({ history, match }) => {
 export default ProductScreen
 
 const ProductContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    color: #171e40;
-    background: #ddd;
-    background: rgba(81,76,173,0.7);
-`;
+  display: flex;
+  flex-direction: column;
+  color: #171e40;
+  background: rgba(124, 121, 178, 0.7);
+  /* background: rgba(81, 76, 173, 0.1); */
+  background: #dddddd;
+`
 
 const BtnBack = styled(Link)`
     background: #171e40;
@@ -226,9 +227,9 @@ const ProductInfo = styled.div`
     display: flex;
     flex-direction: column;
     background: #f7f7f7;
-    /* box-shadow: 0 1.5rem 4rem rgba(0,0,0, .15); */
     margin: 2rem 0;
     border-radius: 4px;
+    /* min-width: 600px; */
 
     @media screen and (max-width: 920px) {
         margin-right: 1rem;
@@ -246,7 +247,7 @@ const InfoWrap = styled.div`
 const Title = styled.p`
     color: #514cad;
     font-weight: 700;
-    font-size: 2.7rem;
+    font-size: 2.3rem;
     margin-right: 1rem;
 `;
 
@@ -271,6 +272,7 @@ const ProductWrap = styled.div`
     justify-content: space-evenly;
     margin: 2rem 0 2rem 1rem;
     background: #f7f2f7;
+    background: #eff1fc;
     min-width: 200px;
     border-radius: 4px;
 
@@ -327,7 +329,7 @@ const ReviewsContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #f7f7f7;
+    background: #f2f2f2;
     border-radius: 4px;
     margin: 0 2rem 2rem 2rem;
     max-width: 700px;
@@ -385,9 +387,10 @@ const FormSelect = styled.form`
     font-size: .9rem;
     border-radius: 4px;
     border: none;
+    border: 1.5px solid #eee;
     outline: none;
     cursor: pointer;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0, .15);
+    /* box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); */
 `;
 
 const FormComment = styled.textarea`
@@ -401,8 +404,9 @@ const FormComment = styled.textarea`
     color: #171e40;
     margin-bottom: 1.5rem;
     border: none;
+    border: 1.5px solid #eee;
     font-family: inherit;
-    box-shadow: 0 .5rem 1rem rgba(0,0,0, .15);
+    /* box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); */
 `;
 
 const GoLink = styled(Link)`
@@ -412,4 +416,3 @@ const GoLink = styled(Link)`
     font-weight: 600;
     margin-bottom: 1rem;
 `;
-

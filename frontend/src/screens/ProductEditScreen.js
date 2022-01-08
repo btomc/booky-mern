@@ -148,10 +148,12 @@ const ProductEditScreen = ({ match, history }) => {
                                 placeholder='Enter image url'
                                 value={image}
                                 onChange={(e) => setImage(e.target.value)}
+                                style={{ borderBottomLeftRadius: '0', borderBottomRightRadius: '0'}}
                             ></FormInput>
                             <FormInput
                                 type='file'
                                 onChange={uploadFileHandler}
+                                style={{ padding: '1rem', backgroundColor: '#fff', borderTopRightRadius: '0', borderTopLeftRadius: '0'}}
                             ></FormInput>
                             {uploading && <Loader />}
                         </FormItem>
@@ -228,13 +230,15 @@ const ProductEditScreen = ({ match, history }) => {
 export default ProductEditScreen
 
 const EditContainer = styled.div`
-    background: #514cad;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #f2f2f2;
-    min-height: 600px;
-`;
+  /* background: #514cad; */
+  background: #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* color: #f2f2f2; */
+  color: #3f3b84;
+  min-height: 600px;
+`
 
 const EditContent = styled.div`
     display: flex;
@@ -289,10 +293,11 @@ const FormItem = styled.div`
     width: 100%;
 `;
 const FormLabel = styled.label`
-    margin-bottom: 5px;
-    color: #f2f2f2;
-    font-weight: 600;
-`;
+  margin-bottom: 5px;
+  /* color: #f2f2f2; */
+  color: #3f3b84;
+  font-weight: 600;
+`
 
 const FormInput = styled.input`
     padding: 12px;
@@ -302,6 +307,7 @@ const FormInput = styled.input`
     outline: none;
     color: #171e40;
 `;
+
 
 const FormText = styled.textarea`
     resize: none;

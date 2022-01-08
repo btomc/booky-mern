@@ -57,7 +57,7 @@ const CardTitle = styled(Link)`
 const CardAuthor = styled.p`
     font-size: 1.2rem;
     font-weight: 600;
-    margin-bottom: 5px;
+    margin: 0 1rem 5px 1rem;
 `;
 
 const CardPrice = styled.p`

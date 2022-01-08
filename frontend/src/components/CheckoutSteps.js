@@ -83,26 +83,26 @@ const ItemLink = styled(Link)`
 `;
 
 const Button = styled.button`
-    border: none;
-    color: #f2f2f2;
-    border-radius: 5px;
-    transition: 0.2s ease-out;
-    cursor: pointer;
-    min-width: 100px;
-    max-width: 200px;
-    outline: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    padding: 1rem 1.5rem;
-    font-size: 1.1rem;
-    background: ${({ opacity }) => (opacity ? 'rgba(81,76,173,0.8)' : '#514cad')};
+  border: none;
+  color: #f2f2f2;
+  border-radius: 5px;
+  transition: 0.2s ease-out;
+  cursor: pointer;
+  min-width: 100px;
+  max-width: 200px;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  background: ${({ opacity }) => (opacity ? 'rgba(81,76,173,0.8)' : '#3f3b84')};
 
-    @media screen and (max-width: 685px) {
-        display: none;
-    }
-`;
+  @media screen and (max-width: 685px) {
+    display: none;
+  }
+`
 
 const BtnSmall = styled.button`
     display: none;
