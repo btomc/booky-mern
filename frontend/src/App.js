@@ -1,5 +1,5 @@
 import React from 'react'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import HomeScreen from './screens/HomeScreen'
@@ -15,26 +15,27 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen'
 import OrderScreen from './screens/OrderScreen'
 import ProductListScreen from './screens/ProductListScreen'
 import ProductEditScreen from './screens/ProductEditScreen'
-
+import OrdersListScreen from './screens/OrdersListScreen'
 
 const App = () => {
   return (
     <Router>
       <Navbar />
       <Switch>
-        <Route path='/order/:id' component={OrderScreen}  />
-        <Route path='/shipping' component={ShippingScreen}  />
-        <Route path='/payment' component={PaymentScreen}  />
-        <Route path='/placeorder' component={PlaceOrderScreen}  />
-        <Route path='/login' component={LoginScreen}  />
-        <Route path='/register' component={RegisterScreen}  />
-        <Route path='/profile' component={ProfileScreen}  />
-        <Route path='/products' component={OfferedProductsScreen}  />
-        <Route path='/search/:keyword' component={OfferedProductsScreen}  />
-        <Route path='/product/:id' component={ProductScreen}  />
-        <Route path='/cart/:id?' component={CartScreen}  />
-        <Route path='/admin/productlist' component={ProductListScreen}  />
-        <Route path='/admin/product/:id/edit' component={ProductEditScreen}  />
+        <Route path='/order/:id' component={OrderScreen} />
+        <Route path='/shipping' component={ShippingScreen} />
+        <Route path='/payment' component={PaymentScreen} />
+        <Route path='/placeorder' component={PlaceOrderScreen} />
+        <Route path='/login' component={LoginScreen} />
+        <Route path='/register' component={RegisterScreen} />
+        <Route path='/profile' component={ProfileScreen} />
+        <Route path='/products' component={OfferedProductsScreen} />
+        <Route path='/search/:keyword' component={OfferedProductsScreen} />
+        <Route path='/product/:id' component={ProductScreen} />
+        <Route path='/cart/:id?' component={CartScreen} />
+        <Route path='/admin/productlist' component={ProductListScreen} />
+        <Route path='/admin/product/:id/edit' component={ProductEditScreen} />
+        <Route path='/admin/orderlist' component={OrdersListScreen} />
         <Route path='/' component={HomeScreen} exact />
       </Switch>
       <Footer />
@@ -42,4 +43,4 @@ const App = () => {
   )
 }
 
-export default App;
+export default App
