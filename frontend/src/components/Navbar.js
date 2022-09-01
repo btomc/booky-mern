@@ -11,6 +11,9 @@ const Navbar = () => {
   const [click, setClick] = useState(false)
   const [clickAdmin, setClickAdmin] = useState(false)
 
+  const cart = useSelector((state) => state.cart)
+  const { cartItems } = cart
+
   const handleClick = () => setClick(!click)
   const handleClickAdmin = () => setClickAdmin(!clickAdmin)
 
@@ -34,6 +37,7 @@ const Navbar = () => {
         </NavLogo>
         <NavMenu>
           <Cart to='/cart'>
+            <CartSpan>{cartItems.length}</CartSpan>
             <CartIcon>
               <MdShoppingCart />
             </CartIcon>
@@ -130,6 +134,7 @@ const Cart = styled(Link)`
   cursor: pointer;
   text-decoration: none;
   color: #514cad;
+  position: relative;
 
   @media screen and (max-width: 640px) {
     margin-right: 3px;
@@ -138,6 +143,20 @@ const Cart = styled(Link)`
       display: none;
     }
   }
+`
+
+const CartSpan = styled.span`
+  position: absolute;
+  top: -15px;
+  right: 0;
+  left: 15px;
+  height: 20px;
+  width: 20px;
+  background: #171e40;
+  color: #f2f2f2;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
 `
 
 const CartIcon = styled(MdShoppingCart)`

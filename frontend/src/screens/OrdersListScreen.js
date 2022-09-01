@@ -46,7 +46,7 @@ function OrdersListScreen({ history }) {
             {orders.map((order) => (
               <ItemsWrap key={order._id}>
                 <TitleId>{order._id}</TitleId>
-                <OrderUser>{order.user & order.user.name}</OrderUser>
+                <OrderUser>{order.user && order.user.name}</OrderUser>
                 <OrderDate>{order.createdAt.substring(0, 10)}</OrderDate>
                 <OrderPrice>{order.totalPrice}</OrderPrice>
                 <OrderPaid>
